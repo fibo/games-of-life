@@ -1,0 +1,24 @@
+{
+  "name": "games-of-life",
+  "version": "0.1.0",
+  "description": "A Mathematical solution to any Game of Life variation",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fibo/games-of-life.git"
+  },
+  "keywords": [
+    "math",
+    "functional",
+    "game-of-life"
+  ],
+  "author": "Gianluca Casati",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fibo/games-of-life/issues"
+  },
+  "homepage": "https://github.com/fibo/games-of-life"
+}
