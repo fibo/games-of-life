@@ -98,7 +98,7 @@ evolve(emptyGrid) // will always return false
 
 Ok, a more interesting example is the blinker
 
-![Blinker](http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life#/media/File:Game_of_life_blinker.gif)
+![Blinker](http://upload.wikimedia.org/wikipedia/commons/9/95/Game_of_life_blinker.gif)
 
 ```
 function horyzontalBlinker (cell) {
