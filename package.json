@@ -1,6 +1,6 @@
 {
   "name": "games-of-life",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A Mathematical solution to any Game of Life variation",
   "main": "index.js",
   "scripts": {

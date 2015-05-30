@@ -38,6 +38,8 @@ function gameOfLife (getNeighbours) {
 
       if (reproduction)
         return true
+
+      return false
     }
 
     return isAliveNext

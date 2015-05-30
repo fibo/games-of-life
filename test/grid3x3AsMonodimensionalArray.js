@@ -31,6 +31,14 @@ describe('grid3x3AsMonodimensionalArray', function () {
     return cell === 0
   } 
 
+  function configurationHoryzontalBlinker (cell) {
+    return (cell === 3) || (cell === 4) || (cell === 5)
+  } 
+
+  function configurationVerticalBlinker (cell) {
+    return (cell === 1) || (cell === 4) || (cell === 7)
+  } 
+
   function configurationsAreEqual (configurationA, configurationB) {
     var areEqual = true
 
@@ -45,14 +53,16 @@ describe('grid3x3AsMonodimensionalArray', function () {
     it ('is a reflection', function () {
       configurationsAreEqual(configuration0, configuration0).should.be.true
       configurationsAreEqual(configuration1, configuration1).should.be.true
-  
+      configurationsAreEqual(configurationHoryzontalBlinker, configurationHoryzontalBlinker).should.be.true
     })
   })
 
   describe('evolve', function () {
     it('as expected', function () {
-       evolve(configuration1)(0).should.be.false
-      //configurationsAreEqual(evolve(configuration1), configuration0).should.be.true
+      configurationsAreEqual(evolve(configuration1), configuration0).should.be.true
+      configurationsAreEqual(evolve(configurationVerticalBlinker), configurationHoryzontalBlinker).should.be.true
+      configurationsAreEqual(evolve(configurationHoryzontalBlinker), configurationVerticalBlinker).should.be.true
+      configurationsAreEqual(evolve(evolve(configurationHoryzontalBlinker)), configurationHoryzontalBlinker).should.be.true
     })
   })
 })
