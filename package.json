@@ -20,5 +20,9 @@
   "bugs": {
     "url": "https://github.com/fibo/games-of-life/issues"
   },
-  "homepage": "https://github.com/fibo/games-of-life"
+  "homepage": "https://github.com/fibo/games-of-life",
+  "devDependencies": {
+    "mocha": "^2.2.5",
+    "should": "^6.0.3"
+  }
 }
