@@ -49,18 +49,32 @@ function gameOfLife (getNeighbours) {
 
       var underPopulation = (isAlive    && (neighboursAlive  <  a)),
           generation      = (isAlive    && ((neighboursAlive >= a) || (neighboursAlive <= b))),
-          overCrowoding   = (isAlive    && (neighboursAlive  >  b)),
+          overCrowding    = (isAlive    && (neighboursAlive  >  b)),
           reproduction    = ((!isAlive) && (neighboursAlive === c))
 
-      if (underPopulation) alive = false
+      if (underPopulation) {
+        debug('cell is dead (under population)')
+        return false
+      }
 
-      if (generation)      alive = true
+      if (generation) {
+        debug('cell is alive (generation)')
+        return true
+      }
 
-      if (overCrowoding)   alive = true
+      if (overCrowding) {
+        debug('cell is dead (over-crowding)')
+        return false
+      }
 
-      if (reproduction)    alive = true
-
-      return alive
+      if (reproduction) {
+        debug('cell is alive (reproduction)')
+        return true
+      }
+      else {
+        debug('cell is dead')
+        return false
+      }
     }
 
     return isAliveNext

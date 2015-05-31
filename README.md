@@ -107,11 +107,11 @@ Ok, a more interesting example is the blinker
 ```
 function horyzontalBlinker (cell) {
   return (cell === 3) || (cell === 4) || (cell === 5)
-} 
+}
 
 function verticalBlinker (cell) {
   return (cell === 1) || (cell === 4) || (cell === 7)
-} 
+}
 
 for (var i = 0; i < 9; i ++) {
   console.log(evolve(horyzontalBlinker)(i) === verticalBlinker(i)) // true
