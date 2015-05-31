@@ -22,15 +22,15 @@ $ bower install games-of-life
 
 ## Idea
 
-Today, the 30th of May 2015, I participated to a [Coderetreat at Milan XPUG](http://coderetreat.org/events/xpug-milan-coderetreat).
+Today, the 30th of May 2015, I have participated in a [Coderetreat at Milan XPUG](http://coderetreat.org/events/xpug-milan-coderetreat).
 
-We had a lot of fun, coding implementations of the [Game of Life][1].
+We have had so much fun coding implementations of the [Game of Life][1].
 
-As a mathematician, I found it a very interesting problem and I could not resist to generalize it and try to solve it in any of its variations.
+As a mathematician, I think it is a very interesting problem. I couldn't resist to generalize it and try to solve it in any of its variations.
 
 Let's start with some abstractions.
 
-The definition of a function *getNeighboursOf* which returns the set of cells adjacent to a given cell, defines a universe of a *Game of Life*.
+The definition of a function *getNeighboursOf* which returns the set of cells adjacent to a given cell, it defines a universe of a *Game of Life*.
 
 Infact, since
 
@@ -45,7 +45,7 @@ In other words,
 On the other hand, let be given the definition of an *isAlive* function, which returns true if the given cell is alive, false otherwise.
 It can be easily extended to an *areAlive* function which returns a list of booleans, given a list of cells and, following a similar identification we used for the *getNeighboursOf* function, an *isAlive* function describes the state of a *Game of Life* universe at a given moment.
 
-The considerations above let implement an **abstract** *Game of Life* in a functional way, in any of its variations in the finite dimensional case, for example:
+The considerations above allow to implement an **abstract** *Game of Life* in a functional way, in any of its variations in the finite dimensional case, for example:
 
 * finite grid
 * infinite grid
@@ -53,7 +53,7 @@ The considerations above let implement an **abstract** *Game of Life* in a funct
 * square, triangular, hexagonal tiles
 * cylinder, torus, moebius strip, boy surface
 
-Take a look to [createWorld.js](https://github.com/fibo/games-of-life/blob/master/src/createWorld.js) for the implementation details.
+Take a look to [createWorld.js](https://github.com/fibo/games-of-life/blob/master/src/createWorld.js) for the implementation's details.
 
 The world has a *transition rule* which defaults to the [classicTransitionRule.js](https://github.com/fibo/games-of-life/blob/master/src/classicTransitionRule.js).
 
@@ -148,7 +148,7 @@ function verticalBlinker (cell) {
 }
 ```
 
-You can check that the *verticalBlinker* evolves in the *horyzontalBlinker* and viceversa
+You may check that the *verticalBlinker* evolves in the *horyzontalBlinker* and vice versa
 
 ```
 for (var i = -1; i < 1; i++)
