@@ -59,6 +59,7 @@ describe('grid3x3AsMonodimensionalArray', function () {
 
   describe('evolve', function () {
     it('as expected', function () {
+      console.log(evolve(configuration1)(0))
       configurationsAreEqual(evolve(configuration1), configuration0).should.be.true
       configurationsAreEqual(evolve(configurationVerticalBlinker), configurationHoryzontalBlinker).should.be.true
       configurationsAreEqual(evolve(configurationHoryzontalBlinker), configurationVerticalBlinker).should.be.true

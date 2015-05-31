@@ -1,12 +1,29 @@
 
+var debug = require('debug')('GoL')
+
+/**
+ * @params {Function} getNeighbours
+ * @returns {Function} evolve
+ */
+
 function gameOfLife (getNeighbours) {
   var a = arguments[1] || 2,
       b = arguments[2] || 3,
       c = arguments[3] || 3
 
+  /**
+   * @params {Function} isAliveNow
+   * @returns {Function} isAliveNext
+   */
+
   function evolve (isAliveNow) {
 
-    function countLiveNeighbours (cell) {
+    /**
+     * @params {*} cell
+     * @returns {Number} count
+     */
+
+    function countNeighboursAlive (cell) {
       var count = 0
 
       var neighbours = getNeighbours(cell)
@@ -15,31 +32,35 @@ function gameOfLife (getNeighbours) {
         if (isAliveNow(neighbours[i]))
           count++
 
+      debug('found ' + count + ' neighbours')
+
       return count
     }
 
+    /**
+     * @params {*} cell
+     * @returns {Boolean} status
+     */
+
     function isAliveNext (cell) {
-      var isAlive = isAliveNow(cell),
-          numLiveNeighbours = countLiveNeighbours(cell)
+      var alive           = false,
+          isAlive         = isAliveNow(cell),
+          neighboursAlive = countNeighboursAlive(cell)
 
-      var underPopulation = (isAlive && (numLiveNeighbours < a))
-      var generation = (isAlive && ((numLiveNeighbours >= a) || (numLiveNeighbours <= b)))
-      var overCrowoding = (isAlive && (numLiveNeighbours > b))
-      var reproduction = ((!isAlive) && (numLiveNeighbours === c))
+      var underPopulation = (isAlive    && (neighboursAlive  <  a)),
+          generation      = (isAlive    && ((neighboursAlive >= a) || (neighboursAlive <= b))),
+          overCrowoding   = (isAlive    && (neighboursAlive  >  b)),
+          reproduction    = ((!isAlive) && (neighboursAlive === c))
 
-      if (underPopulation)
-        return false
+      if (underPopulation) alive = false
 
-      if (generation)
-        return true
+      if (generation)      alive = true
 
-      if (overCrowoding)
-        return true
+      if (overCrowoding)   alive = true
 
-      if (reproduction)
-        return true
+      if (reproduction)    alive = true
 
-      return false
+      return alive
     }
 
     return isAliveNext
