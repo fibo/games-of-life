@@ -1,7 +1,7 @@
 {
   "name": "games-of-life",
   "main": "dist/games-of-life.js",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "homepage": "http://g14n.info/games-of-life",
   "authors": [
     "Gianluca Casati"
