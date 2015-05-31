@@ -119,9 +119,16 @@ for (var i = 0; i < 9; i ++) {
 }
 ```
 
+## Links
+
+[LifeWiki][2]
+[Hacker News thread][3]
+
 ## License
 
 [MIT](http://g14n.info/mit-license)
 
 [1]: http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life "Game of Life"
-
+[2]: http://www.conwaylife.com/wiki/Main_Page "LikeWiki"
+[3]: https://news.ycombinator.com/item?id=9632255 "Hacker News thread"
+ 
