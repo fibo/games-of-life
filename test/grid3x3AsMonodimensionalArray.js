@@ -25,19 +25,19 @@ describe('grid3x3AsMonodimensionalArray', function () {
 
   function configuration0 (cell) {
     return false
-  } 
+  }
 
   function configuration1 (cell) {
     return cell === 0
-  } 
+  }
 
   function configurationHoryzontalBlinker (cell) {
     return (cell === 3) || (cell === 4) || (cell === 5)
-  } 
+  }
 
   function configurationVerticalBlinker (cell) {
     return (cell === 1) || (cell === 4) || (cell === 7)
-  } 
+  }
 
   function configurationsAreEqual (configurationA, configurationB) {
     var areEqual = true

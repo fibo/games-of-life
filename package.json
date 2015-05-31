@@ -4,6 +4,7 @@
   "description": "A Mathematical solution to any Game of Life variation",
   "main": "index.js",
   "scripts": {
+    "jshint": "jshint -c .jshintrc src/*.js test/*.js",
     "test": "mocha"
   },
   "repository": {
