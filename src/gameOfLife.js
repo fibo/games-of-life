@@ -1,6 +1,4 @@
 
-var debug = require('debug')('GoL')
-
 /**
  * @params {Function} getNeighbours
  * @returns {Function} evolve
@@ -32,19 +30,16 @@ function gameOfLife (getNeighbours) {
         if (isAliveNow(neighbours[i]))
           count++
 
-      debug('found ' + count + ' neighbours')
-
       return count
     }
 
     /**
      * @params {*} cell
-     * @returns {Boolean} status
+     * @returns {Boolean} status of the cell
      */
 
     function isAliveNext (cell) {
-      var alive           = false,
-          isAlive         = isAliveNow(cell),
+      var isAlive         = isAliveNow(cell),
           neighboursAlive = countNeighboursAlive(cell)
 
       var underPopulation = (isAlive    && (neighboursAlive  <  a)),
@@ -53,26 +48,21 @@ function gameOfLife (getNeighbours) {
           reproduction    = ((!isAlive) && (neighboursAlive === c))
 
       if (underPopulation) {
-        debug('cell is dead (under population)')
         return false
       }
 
       if (generation) {
-        debug('cell is alive (generation)')
         return true
       }
 
       if (overCrowding) {
-        debug('cell is dead (over-crowding)')
         return false
       }
 
       if (reproduction) {
-        debug('cell is alive (reproduction)')
         return true
       }
       else {
-        debug('cell is dead')
         return false
       }
     }
