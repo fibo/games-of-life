@@ -1,0 +1,29 @@
+{
+  "name": "games-of-life",
+  "main": "dist/games-of-life.js",
+  "version": "0.2.0",
+  "homepage": "http://g14n.info/games-of-life",
+  "authors": [
+    "Gianluca Casati"
+  ],
+  "description": "A Mathematical solution to any Game of Life variation",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "math",
+    "functional",
+    "game-of-life"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "gh-pages",
+    "npm-debug.log",
+    "test",
+    "src",
+    "index.js"
+  ]
+}

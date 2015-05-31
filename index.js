@@ -1,3 +1,3 @@
 
-module.exports = require('./src/gameOfLife')
+module.exports = require('./src/')
 

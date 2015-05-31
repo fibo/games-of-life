@@ -6,11 +6,25 @@
 
 [![NPM](https://nodei.co/npm-dl/games-of-life.png)](https://nodei.co/npm-dl/games-of-life/)
 
+## Installation
+
+With [npm](https://npmjs.org/) do
+
+```bash
+$ npm install games-of-life
+```
+
+With [bower](http://bower.io/) do
+
+```bash
+$ bower install games-of-life
+```
+
 ## Idea
 
-Today, the 30th of May 2015, I was at a [XPUG Milan Coderetreat](http://coderetreat.org/events/xpug-milan-coderetreat) that was very interesting.
+Today, the 30th of May 2015, I participated to a [Coderetreat at Milan XPUG](http://coderetreat.org/events/xpug-milan-coderetreat).
 
-We had fun coding implementations of the [Game of Life][1].
+We had a lot of fun, coding implementations of the [Game of Life][1].
 
 As a mathematician, I found it a very interesting problem and I could not resist to generalize it and try to solve it in any of its variations.
 
@@ -28,19 +42,6 @@ In other words,
 
 > if you define a *getNeighbours* function you also shape the space of a *Game of Life* universe
 
-The universe also has *rules*, which are not abstracted out in this study, but are generalized in their thresholds
-
-1. Any live cell with fewer than `a` live neighbours dies, as if caused by under-population.
-2. Any live cell with `a` or `b` live neighbours lives on to the next generation.
-3. Any live cell with more than `b` live neighbours dies, as if by overcrowding.
-4. Any dead cell with exactly `c` live neighbours becomes a live cell, as if by reproduction.
-
-where in the classic *Game of Life* rules,
-
-    a = 2
-    b = 3
-    c = 3
-
 On the other hand, let be given the definition of an *isAlive* function, which returns true if the given cell is alive, false otherwise.
 It can be easily extended to an *areAlive* function which returns a list of booleans, given a list of cells and, following a similar identification we used for the *getNeighboursOf* function, an *isAlive* function describes the state of a *Game of Life* universe at a given moment.
 
@@ -52,7 +53,9 @@ The considerations above let implement an **abstract** *Game of Life* in a funct
 * square, triangular, hexagonal tiles
 * cylinder, torus, moebius strip, boy surface
 
-Take a look to [gameOfLife.js](https://github.com/fibo/games-of-life/blob/master/src/gameOfLife.js) for the implementation details.
+Take a look to [createWorld.js](https://github.com/fibo/games-of-life/blob/master/src/createWorld.js) for the implementation details.
+
+The world has a *transition rule* which defaults to the [classicTransitionRule.js](https://github.com/fibo/games-of-life/blob/master/src/classicTransitionRule.js).
 
 ## Example
 
@@ -80,15 +83,20 @@ function getNeighboursOf (cell) {
 }
 ```
 
-Create the *evolve* function for this *Game of Life* universe
+Create a *Game of Life* world, and get the *evolve* function
 
 ```
-var gameOfLife = require('gameOfLife')
+var gamesOfLife = require('games-of-life')
 
-var evolve = gameOfLife(getNeighboursOf)
+var createWorld    = gamesOfLife.createWorld,
+    transitionRule = gamesOfLife.classicTransitionRule.bind(null, 2, 3, 3)
+
+var world = createWorld(getNeighboursOf)
+
+var evolve = world(transitionRule)
 ```
 
-The empty grid is a function that always returns false, so
+The empty grid is represented by a function that always returns false, so
 
 ```
 function emptyGrid () {
@@ -96,6 +104,16 @@ function emptyGrid () {
 }
 
 evolve(emptyGrid) // will always return false
+```
+
+Try with a single cell at the origin
+
+```
+function singleCellAtTheOrigin () {
+  return ((cell[0] === 0) && (cell[1] === 0))
+}
+
+evolve(singleCellAtTheOrigin) // will always return false too, cause the cell dies
 ```
 
 Ok, a more interesting example is the blinker
@@ -130,7 +148,7 @@ function verticalBlinker (cell) {
 }
 ```
 
-You can check that the verticalBlinker evolves in the horyzontalBlinker and viceversa
+You can check that the *verticalBlinker* evolves in the *horyzontalBlinker* and viceversa
 
 ```
 for (var i = -1; i < 1; i++)

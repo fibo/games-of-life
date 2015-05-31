@@ -1,7 +1,7 @@
 
 var should = require('should')
 
-var countAliveNeighbours = require('../src/countAliveNeighbours')
+var countAliveNeighbours = require('..').countAliveNeighbours
 
 describe('countAliveNeighbours', function () {
 

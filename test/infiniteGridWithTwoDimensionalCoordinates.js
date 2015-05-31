@@ -1,27 +1,39 @@
 
 var should = require('should')
 
-var gameOfLife = require('..')
+var gamesOfLife = require('..')
+
+var createWorld    = gamesOfLife.createWorld,
+    transitionRule = gamesOfLife.classicTransitionRule.bind(null, 2, 3, 3)
+
+/**
+ * @params {Array} cell
+ * @returns {Array} neighbours
+ */
+
+function getNeighboursOf (cell) {
+  var x = cell[0],
+      y = cell[1]
+
+  var neighbours = []
+
+  for (var j = y - 1; j <= y + 1; j++) {
+    for (var i = x - 1; i <= x + 1; i++) {
+      if ((i === x) && (j === y))
+        continue
+
+      neighbours.push([i, j])
+    }
+  }
+
+  return neighbours
+}
+
+var world = createWorld(getNeighboursOf)
+
+var evolve = world(transitionRule)
 
 describe('infiniteGridWithTwoDimensionalCoordinates', function () {
-
-  function getNeighboursOf (cell) {
-    var x = cell[0],
-        y = cell[1]
-
-    var neighbours = []
-
-    for (var j = y - 1; j <= y + 1; j++) {
-      for (var i = x - 1; i <= x + 1; i++) {
-        if ((i === x) && (j === y))
-          continue
-
-        neighbours.push([i, j])
-      }
-    }
-
-    return neighbours
-  }
 
   describe('getNeighboursOf', function () {
     it('is well defined', function () {
@@ -34,8 +46,6 @@ describe('infiniteGridWithTwoDimensionalCoordinates', function () {
       ])
     })
   })
-
-  var evolve = new gameOfLife(getNeighboursOf)
 
   function patternsAreEqual (patternA, patternB) {
     var areEqual = true
@@ -60,7 +70,7 @@ describe('infiniteGridWithTwoDimensionalCoordinates', function () {
     return false
   }
 
-  function singleCellInTheOrigin (cell) {
+  function singleCellAtTheOrigin (cell) {
     return ((cell[0] === 0) && (cell[1] === 0))
   }
 
@@ -93,7 +103,7 @@ describe('infiniteGridWithTwoDimensionalCoordinates', function () {
   describe('evolve', function () {
     it('as expected', function () {
       patternsAreEqual(evolve(emptyGrid), emptyGrid).should.be.true
-      patternsAreEqual(evolve(singleCellInTheOrigin), emptyGrid).should.be.true
+      patternsAreEqual(evolve(singleCellAtTheOrigin), emptyGrid).should.be.true
       patternsAreEqual(evolve(verticalBlinker), horyzontalBlinker).should.be.true
       patternsAreEqual(evolve(horyzontalBlinker), verticalBlinker).should.be.true
       patternsAreEqual(evolve(evolve(horyzontalBlinker)), horyzontalBlinker).should.be.true
