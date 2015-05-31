@@ -56,31 +56,27 @@ Take a look to [gameOfLife.js](https://github.com/fibo/games-of-life/blob/master
 
 ## Example
 
-The simplest example is the [grid 3 x 3 implemented as a mono dimensional array](https://github.com/fibo/games-of-life/blob/master/test/grid3x3AsMonodimensionalArray.js).
+A simple example is the [infinite grid with two dimensional coordinates](https://github.com/fibo/games-of-life/blob/master/test/infiniteGridWithTwoDimensionalCoordinates.js).
+
+Define a *getNeighboursOf* which returns the neighbours of a given cell.
 
 ```
-0 1 2
-3 4 5
-6 7 8
-```
+function getNeighboursOf (cell) {
+  var x = cell[0],
+      y = cell[1]
 
-Define a straight *getNeighboursOf* which returns the neighbours of a given cell, even without an algorithm. It doesn't matter since as two functions has the same result set they can be considered equivalents.
+  var neighbours = []
 
-```
-function getNeighboursOf (index) {
-  var neighboursOf = {
-    0: [1, 3, 4],
-    1: [0, 2, 3, 4, 5],
-    2: [1, 4, 5],
-    3: [0, 1, 4, 6, 7],
-    4: [0, 1, 2, 3, 5, 6, 7, 8],
-    5: [1, 2, 4, 7, 8],
-    6: [3, 4, 7],
-    7: [3, 4, 5, 6, 8],
-    8: [4, 5, 7]
+  for (var j = y - 1; j <= y + 1; j++) {
+    for (var i = x - 1; i <= x + 1; i++) {
+      if ((i === x) && (j === y))
+        continue
+
+      neighbours.push([i, j])
+    }
   }
 
-  return neighboursOf[index]
+  return neighbours
 }
 ```
 
@@ -92,10 +88,12 @@ var gameOfLife = require('gameOfLife')
 var evolve = gameOfLife(getNeighboursOf)
 ```
 
-The empty grid is like a function that always returns false, so
+The empty grid is a function that always returns false, so
 
 ```
-function emptyGrid () { return false }
+function emptyGrid () {
+  return false
+}
 
 evolve(emptyGrid) // will always return false
 ```
@@ -106,22 +104,42 @@ Ok, a more interesting example is the blinker
 
 ```
 function horyzontalBlinker (cell) {
-  return (cell === 3) || (cell === 4) || (cell === 5)
+  var x = cell[0],
+      y = cell[1]
+
+  if (y !== 0)
+    return false
+
+  if ((x >= -1) && (x <= 1))
+    return true
+
+  return false
 }
 
 function verticalBlinker (cell) {
-  return (cell === 1) || (cell === 4) || (cell === 7)
-}
+  var x = cell[0],
+      y = cell[1]
 
-for (var i = 0; i < 9; i ++) {
-  console.log(evolve(horyzontalBlinker)(i) === verticalBlinker(i)) // true
-  console.log(evolve(verticalBlinker)(i) === horyzontalBlinker(i)) // true
+  if (x !== 0)
+    return false
 
-  // and also
-  console.log(evolve(evolve(horyzontalBlinker))(i) === horyzontalBlinker(i)) // true
-  console.log(evolve(evolve(verticalBlinker))(i) === verticalBlinker(i)) // true
+  if ((y >= -1) && (y <= 1))
+    return true
+
+  return false
 }
 ```
+
+You can check that the verticalBlinker evolves in the horyzontalBlinker and viceversa
+
+```
+for (var i = -1; i < 1; i++)
+  for (var j = -1; j < 1; j++)
+    console.log(evolve(verticalBlinker)(i, j) ===  horyzontalBlinker(i, j)) // true
+```
+
+See also other examples:
+* [grid 3x3 as mono dimensional array](https://github.com/fibo/games-of-life/blob/master/test/grid3x3AsMonoDimensionalArray.js)
 
 ## Links
 

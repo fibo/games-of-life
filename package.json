@@ -1,11 +1,12 @@
 {
   "name": "games-of-life",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "A Mathematical solution to any Game of Life variation",
   "main": "index.js",
   "scripts": {
-    "jshint": "jshint -c .jshintrc src/*.js test/*.js",
-    "test": "mocha"
+    "test": "mocha",
+    "jshint": "jshint -c .jshintrc src/*.js test/*.js"
+
   },
   "repository": {
     "type": "git",
@@ -16,17 +17,22 @@
     "functional",
     "game-of-life"
   ],
-  "author": "Gianluca Casati",
-  "license": "MIT",
+  "author": {
+    "name": "Gianluca Casati",
+    "url": "http://g14n.info"
+  },
+  "license": [
+    {
+      "type": "MIT",
+      "url": "http://g14n.info/mit-license"
+    }
+  ],
   "bugs": {
     "url": "https://github.com/fibo/games-of-life/issues"
   },
-  "homepage": "https://github.com/fibo/games-of-life",
+  "homepage": "http://g14n.info/games-of-life",
   "devDependencies": {
     "mocha": "^2.2.5",
     "should": "^6.0.3"
-  },
-  "dependencies": {
-    "debug": "^2.2.0"
   }
 }
