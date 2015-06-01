@@ -81,6 +81,10 @@ function getNeighboursOf (cell) {
 
   return neighbours
 }
+
+// Alias the adjacency function  with a more meaningful name,
+// to improve semantic in the example code below.
+var infiniteGrid2d = getNeighboursOf
 ```
 
 Create a *Game of Life* world, and get the *evolve* function
@@ -91,7 +95,7 @@ var gamesOfLife = require('games-of-life')
 var createWorld    = gamesOfLife.createWorld,
     transitionRule = gamesOfLife.classicTransitionRule.bind(null, 2, 3, 3)
 
-var world = createWorld(getNeighboursOf)
+var world = createWorld(infiniteGrid2d)
 
 var evolve = world(transitionRule)
 ```
