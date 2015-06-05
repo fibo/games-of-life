@@ -1,7 +1,7 @@
 
 var should = require('should')
 
-var gamesOfLife = require('..')
+var gamesOfLife = require('games-of-life')
 
 var createWorld    = gamesOfLife.createWorld,
     transitionRule = gamesOfLife.classicTransitionRule.bind(null, 2, 3, 3)

@@ -59,7 +59,7 @@ The world has a *transition rule* which defaults to the [classicTransitionRule.j
 
 ## Example
 
-A simple example is the [infinite grid with two dimensional coordinates](https://github.com/fibo/games-of-life/blob/master/test/infiniteGridWithTwoDimensionalCoordinates.js).
+A simple example is the [infinite grid with two dimensional coordinates](https://github.com/fibo/games-of-life/blob/master/test/example/infiniteGridWithTwoDimensionalCoordinates.js).
 
 Define a *getNeighboursOf* which returns the neighbours of a given cell.
 
@@ -109,7 +109,7 @@ evolve(emptyGrid) // will always return false
 Try with a single cell at the origin
 
 ```
-function singleCellAtTheOrigin () {
+function singleCellAtTheOrigin (cell) {
   return ((cell[0] === 0) && (cell[1] === 0))
 }
 
@@ -157,12 +157,13 @@ for (var i = -1; i < 1; i++)
 ```
 
 See also other examples:
-* [grid 3x3 as mono dimensional array](https://github.com/fibo/games-of-life/blob/master/test/grid3x3AsMonoDimensionalArray.js)
+* [grid 3x3 as mono dimensional array](https://github.com/fibo/games-of-life/blob/master/test/example/grid3x3AsMonoDimensionalArray.js)
+* [hexagonal tiles with two dimensional coordinates](https://github.com/fibo/games-of-life/blob/master/test/example/hexagonalTilesWithTwoDimensionalCoordinates.js)
 
 ## Links
 
-[LifeWiki][2]
-[Hacker News thread][3]
+* [LifeWiki][2]
+* [Hacker News thread][3]
 
 ## License
 
