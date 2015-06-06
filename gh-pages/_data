@@ -6,11 +6,12 @@
   "scripts": {
     "browserify": "browserify -s gamesOfLife -e index.js -o dist/${npm_package_name}.js",
     "build": "npm test && npm run browserify",
+    "cp": "cp dist/games-of-life.js gh-pages/",
     "gh-pages:_data": "npm run package.json",
     "gh-pages:push": "git subtree --prefix gh-pages push origin gh-pages",
     "gh-pages:pull": "git subtree --prefix gh-pages pull origin gh-pages",
     "homepage": "echo \"---\ntitle: $npm_package_name\n---\" > gh-pages/index.md; cat README.md >> gh-pages/index.md",
-    "jekyll": "npm run homepage; npm run gh-pages:_data; cd gh-pages; jekyll build; cd ..",
+    "jekyll": "npm run homepage; npm run cp; npm run gh-pages:_data; cd gh-pages; jekyll build; cd ..",
     "jshint": "jshint -c .jshintrc src/**.js test/**.js",
     "package.json": "cp package.json gh-pages/_data",
     "test": "mocha --bail --require should --reporter min --recursive"
