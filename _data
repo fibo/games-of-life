@@ -6,7 +6,8 @@
   "scripts": {
     "browserify": "browserify -s gamesOfLife -e index.js -o dist/${npm_package_name}.js",
     "build": "npm test && npm run browserify",
-    "cp": "cp dist/games-of-life.js gh-pages/",
+    "cp": "npm run cp:dist",
+    "cp:dist": "cp -r dist/ gh-pages/",
     "gh-pages:_data": "npm run package.json",
     "gh-pages:push": "git subtree --prefix gh-pages push origin gh-pages",
     "gh-pages:pull": "git subtree --prefix gh-pages pull origin gh-pages",
