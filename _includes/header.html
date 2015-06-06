@@ -1,0 +1,21 @@
+<!-- _includes/header.html start -->
+{% assign package = site.data.package %}
+
+<meta charset="{{ site.encoding }}">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="description" content="{{ package.description }}">
+<meta name="keywords" content="{{ package.keywords | join: ',' }}">
+<meta name="author" content="{{ package.author.name }}">
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>{{ page.title }}</title>
+
+<!-- Bootstrap -->
+<link rel="stylesheet" href="{{ site.bootstrap.base_url }}/{{ site.bootstrap.version }}/css/bootstrap.min.css">
+<link rel="stylesheet" href="{{ site.bootstrap.base_url }}/{{ site.bootstrap.version }}/css/bootstrap-theme.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+<!-- _includes/header.html end -->
