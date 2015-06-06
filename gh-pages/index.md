@@ -1,3 +1,6 @@
+---
+title: games-of-life
+---
 # games-of-life
 
 > A Mathematical solution to any Game of Life variation
@@ -5,11 +8,6 @@
 [![NPM version](https://badge.fury.io/js/games-of-life.png)](http://badge.fury.io/js/games-of-life) [![Build Status](https://travis-ci.org/fibo/games-of-life.png?branch=master)](https://travis-ci.org/fibo/games-of-life?branch=master) [![Dependency Status](https://gemnasium.com/fibo/games-of-life.png)](https://gemnasium.com/fibo/games-of-life)
 
 [![NPM](https://nodei.co/npm-dl/games-of-life.png)](https://nodei.co/npm-dl/games-of-life/)
-
-## Demo
-
-<p data-height="268" data-theme-id="0" data-slug-hash="ZGKpzX" data-default-tab="result" data-user="fibo" class='codepen'>See the Pen <a href='http://codepen.io/fibo/pen/ZGKpzX/'>Honeycomb game of life</a> by fibo (<a href='http://codepen.io/fibo'>@fibo</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
-<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
 ## Installation
 
