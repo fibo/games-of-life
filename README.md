@@ -8,8 +8,7 @@
 
 ## Demo
 
-<p data-height="268" data-theme-id="0" data-slug-hash="ZGKpzX" data-default-tab="result" data-user="fibo" class='codepen'>See the Pen <a href='http://codepen.io/fibo/pen/ZGKpzX/'>Honeycomb game of life</a> by fibo (<a href='http://codepen.io/fibo'>@fibo</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
-<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+[![Hexagonal game of life](http://g14n.info/games-of-life/images/HexagonalGameOfLife-400x300.png)](http://g14n.info/games-of-life/example/hexagonal)
 
 ## Installation
 
