@@ -38,9 +38,7 @@ function isAlive (cell) {
   var x = cell[0],
       y = cell[1]
 
-  console.log(cell)
-  return true
-  //return $(selectCell(x, y)).hasClass('alive')
+  return $(selectCell(x, y)).hasClass('alive')
 }
 
 $('.hex').click(function() {
