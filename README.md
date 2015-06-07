@@ -4,7 +4,7 @@
 
 [![NPM version](https://badge.fury.io/js/games-of-life.png)](http://badge.fury.io/js/games-of-life) [![Build Status](https://travis-ci.org/fibo/games-of-life.png?branch=master)](https://travis-ci.org/fibo/games-of-life?branch=master) [![Dependency Status](https://gemnasium.com/fibo/games-of-life.png)](https://gemnasium.com/fibo/games-of-life)
 
-[![NPM](https://nodei.co/npm-dl/games-of-life.png)](https://nodei.co/npm-dl/games-of-life/)
+[![NPM](https://nodei.co/npm-dl/games-of-life.jpg)](https://nodei.co/npm-dl/games-of-life/)
 
 ## Demo
 
