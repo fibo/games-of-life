@@ -122,11 +122,161 @@ exports.countAliveNeighbours = require('./countAliveNeighbours')
 
 exports.createWorld = require('./createWorld')
 
+exports.pattern = require('./pattern')
 
-},{"./classicTransitionRule":1,"./countAliveNeighbours":2,"./createWorld":3}],5:[function(require,module,exports){
+exports.space = require('./space')
+
+
+},{"./classicTransitionRule":1,"./countAliveNeighbours":2,"./createWorld":3,"./pattern":6,"./space":10}],5:[function(require,module,exports){
+
+/**
+ * @returns {Boolean} false
+ */
+
+function emptySpace () {
+  return false
+}
+
+module.exports = emptySpace
+
+
+},{}],6:[function(require,module,exports){
+
+exports.emptySpace = require('./emptySpace')
+
+exports.singleCell = require('./singleCell')
+
+exports.singleCellAtOrigin = require('./singleCellAtOrigin')
+
+
+},{"./emptySpace":5,"./singleCell":7,"./singleCellAtOrigin":8}],7:[function(require,module,exports){
+
+var singleCellAtOrigin = require('./singleCellAtOrigin')
+
+/**
+ * @params {Array} cell
+ * @returns {Function} isAlive
+ */
+
+function singleCell (coordinates) {
+
+  function isAlive (cell) {
+    var translatedCell = []
+
+    for (var i in cell)
+      translatedCell.push(cell[i] - coordinates[i])
+
+    return singleCellAtOrigin(translatedCell)
+  }
+
+  return isAlive
+}
+
+module.exports = singleCell
+
+
+},{"./singleCellAtOrigin":8}],8:[function(require,module,exports){
+
+/**
+ * @params {Array} cell
+ * @returns {Boolean} status
+ */
+
+function singleCellAtOrigin (cell) {
+  function isZero (coordinate) {
+    return coordinate === 0
+  }
+
+  return cell.filter(isZero).length === cell.length
+}
+
+module.exports = singleCellAtOrigin
+
+
+},{}],9:[function(require,module,exports){
+
+/**
+ * Defines an hexagonal tiling with well defined 2d coordinates
+ *
+ * The natural mathematics to describe an hexagonal tiling is given by [Eisenstein integers](http://en.wikipedia.org/wiki/Eisenstein_integer).
+ *
+ * The cube root of unit ω is given by
+ *
+ * ![omega coordinates](http://upload.wikimedia.org/math/0/e/3/0e396c16b84893b618487309549952fe.png)
+ *
+ * My first idea was to use a sort of three dimensional coordinates
+ *
+ * ```
+ * x = 2 + ω
+ * y = 1 + 2 ω
+ * z = ω - 1
+ * ```
+ *
+ * ```
+ *                 Y axis
+ *                                               X axis
+ *                 0,1,1                  3,0,0
+ *  Z axis
+ *
+ *    0,0,2        0,1,0           2,0,0
+ *
+ *          0,0,1         1,0,0
+ *
+ *     o           0,0,0             o
+ *
+ *         -1,0,0          0,0,-1            o
+ *
+ *                0,-1,0           0,0,-2
+ *
+ *            o              o
+ *
+ *                0,-2,0
+ * ```
+ *
+ * then, applying condition `y = z + x` everything makes sense.
+ * Yes, cause it is like a plane in 3d so coordinates reduces to two and furthermore, it is geometrically well defined, i.e. it makes coordinates linear.
+ *
+ *
+ * ```
+ *                 1, 1
+ *
+ *          0, 1          2, 0
+ *
+ *   -1, 1         1, 0          1, 1
+ *
+ *          0, 0          2,-1
+ *
+ *   -1, 0         1,-1
+ *
+ *          0,-1
+ * ```
+ *
+ * @params {Array} cell
+ * @returns {Array} neighbours
+ */
+
+function hexagonal (cell) {
+  var x = cell[0],
+      y = cell[1]
+
+  var neighbours = [[x-1, y+1], [x, y+1], [x+1, y],
+                    [x-1, y], [x, y-1], [x+1, y-1]]
+
+  return neighbours
+}
+
+module.exports = hexagonal
+
+
+},{}],10:[function(require,module,exports){
+
+exports.hexagonal = require('./hexagonal')
+
+
+},{"./hexagonal":9}],11:[function(require,module,exports){
 
 module.exports = require('./src/')
 
 
-},{"./src/":4}]},{},[5])(5)
+},{"./src/":4}]},{},[11])(11)
 });
