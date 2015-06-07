@@ -1,0 +1,67 @@
+---
+title: Hexagonal game of life
+layout: page
+---
+
+{% assign package = site.data.package %}
+
+<link rel="stylesheet" href="../../css/hexagonal.css">
+
+<h1>Hexagonal game of life</h1>
+<button id="loop-toggle">Run</button>
+
+<div class="hex-col-odd">
+  <div class="hex"></div>
+  <div class="hex"></div>
+  <div class="hex"></div>
+  <div class="hex"></div>
+  <div class="hex"></div>
+</div>
+<div class="hex-col-even">
+  <div class="hex alive"></div>
+  <div class="hex"></div>
+  <div class="hex"></div>
+  <div class="hex"></div>
+  <div class="hex"></div>
+</div>
+<div class="hex-col-odd">
+  <div class="hex"></div>
+  <div class="hex"></div>
+  <div class="hex"></div>
+  <div class="hex"></div>
+  <div class="hex"></div>
+</div>
+<div class="hex-col-even">
+  <div class="hex alive"></div>
+  <div class="hex"></div>
+  <div class="hex"></div>
+  <div class="hex"></div>
+  <div class="hex"></div>
+</div>
+<div class="hex-col-odd">
+  <div class="hex"></div>
+  <div class="hex"></div>
+  <div class="hex"></div>
+  <div class="hex"></div>
+  <div class="hex"></div>
+</div>
+<div class="hex-col-even">
+  <div class="hex alive"></div>
+  <div class="hex"></div>
+  <div class="hex"></div>
+  <div class="hex"></div>
+  <div class="hex"></div>
+</div>
+<div class="hex-col-odd">
+  <div class="hex"></div>
+  <div class="hex"></div>
+  <div class="hex"></div>
+  <div class="hex"></div>
+  <div class="hex"></div>
+</div>
+
+<p>This is a demo for the <a href="{{ package.homepage }}">{{ package.name }}</a> npm package.<p>
+
+<script type="text/javascript" src="//{{ site.domain }}/{{ package.name }}/dist/{{ package.name }}.js"></script>
+<script type="text/javascript" src="../../js/hexagonal.js"></script>
+
