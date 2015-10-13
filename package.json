@@ -29,12 +29,7 @@
     "name": "Gianluca Casati",
     "url": "http://g14n.info"
   },
-  "license": [
-    {
-      "type": "MIT",
-      "url": "http://g14n.info/mit-license"
-    }
-  ],
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/fibo/games-of-life/issues"
   },
