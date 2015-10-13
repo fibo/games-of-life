@@ -1,5 +1,4 @@
-(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.gamesOfLife = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-
+require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var countAliveNeighbours = require('./countAliveNeighbours')
 
 /**
@@ -37,17 +36,17 @@ function classicTransitionRule (a, b, c, getNeighboursOf, isAlive) {
   function nextStatusOf (cell) {
     var numNeighboursAlive = countAliveNeighboursOf(cell)
 
-    if (isAlive(cell))
+    if (isAlive(cell)) {
       return ((numNeighboursAlive >= a) && (numNeighboursAlive <= b))
-    else
+    } else {
       return (numNeighboursAlive === c)
+    }
   }
 
   return nextStatusOf
 }
 
 module.exports = classicTransitionRule
-
 
 },{"./countAliveNeighbours":2}],2:[function(require,module,exports){
 
@@ -66,24 +65,25 @@ module.exports = countAliveNeighbours
 
 
 },{}],3:[function(require,module,exports){
-
 var classicTransitionRule = require('./classicTransitionRule')
 
 /**
+ * Create a GoL world.
+ *
  * @params {Function} getNeighboursOf
  * @returns {Function} world
  */
 
 function createWorld (getNeighboursOf) {
-
   /**
    * @params {Function} [transitionRule] defaults to classis GoL transition rule
    * @returns {Function} evolve
    */
 
   function world (transitionRule) {
-    if (typeof transitionRule === 'undefined')
+    if (typeof transitionRule === 'undefined') {
       transitionRule = classicTransitionRule.bind(null, 2, 3, 3)
+    }
 
     /**
      * @params {Function} isAliveNow
@@ -112,7 +112,6 @@ function createWorld (getNeighboursOf) {
 }
 
 module.exports = createWorld
-
 
 },{"./classicTransitionRule":1}],4:[function(require,module,exports){
 
@@ -273,10 +272,9 @@ module.exports = hexagonal
 exports.hexagonal = require('./hexagonal')
 
 
-},{"./hexagonal":9}],11:[function(require,module,exports){
+},{"./hexagonal":9}],"games-of-life":[function(require,module,exports){
 
 module.exports = require('./src/')
 
 
-},{"./src/":4}]},{},[11])(11)
-});
+},{"./src/":4}]},{},[]);

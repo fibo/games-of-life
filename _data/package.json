@@ -1,21 +1,32 @@
 {
   "name": "games-of-life",
+  "description": "is a Mathematical solution to any Game of Life variation",
   "version": "0.2.1",
-  "description": "A Mathematical solution to any Game of Life variation",
   "main": "index.js",
   "scripts": {
-    "browserify": "browserify -s gamesOfLife -e index.js -o dist/${npm_package_name}.js",
-    "build": "npm test && npm run browserify",
-    "cp": "npm run cp:dist; npm run cp:package.json",
-    "cp:dist": "cp -r dist/ gh-pages/",
-    "cp:package.json": "cp package.json gh-pages/_data/",
-    "gh-pages:push": "git subtree --prefix gh-pages push origin gh-pages",
-    "gh-pages:pull": "git subtree --prefix gh-pages pull origin gh-pages",
+    "_build": "npm test && npm run browserify && npm run minify && npm run jekyll; git status",
+    "_push": "git push origin master && npm run gh-pages_push",
+    "_pull": "git pull origin master && npm run gh-pages_pull",
+    "browserify": "browserify -r ./index.js:${npm_package_name} -o dist/${npm_package_name}.js",
+    "cp": "npm run cp_dist; npm run cp_package.json",
+    "cp_dist": "cp -r dist/ gh-pages/",
+    "cp_package.json": "cp package.json gh-pages/_data/",
+    "gh-pages_push": "git subtree --prefix gh-pages push origin gh-pages",
+    "gh-pages_pull": "git subtree --prefix gh-pages pull origin gh-pages",
     "homepage": "echo \"---\ntitle: $npm_package_name\n---\" > gh-pages/index.md; cat README.md >> gh-pages/index.md",
     "jekyll": "npm run homepage; npm run cp; cd gh-pages; jekyll build; cd ..",
-    "jshint": "jshint -c .jshintrc src/**.js test/**.js",
+    "lint": "npm run lint_src; npm run lint_test",
+    "lint_src": "standard src/*",
+    "lint_test": "cd test; standard --global describe --global it; cd -",
+    "minify": "uglifyjs dist/${npm_package_name}.js --output dist/${npm_package_name}.min.js --compress --mangle",
+    "postversion": "git push origin v${npm_package_version}; npm publish; npm run _push; npm run heroku",
     "test": "mocha --bail --require should --reporter min --recursive"
   },
+  "pre-commit": [
+    "check-deps",
+    "lint",
+    "test"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/fibo/games-of-life.git"
@@ -29,19 +40,17 @@
     "name": "Gianluca Casati",
     "url": "http://g14n.info"
   },
-  "license": [
-    {
-      "type": "MIT",
-      "url": "http://g14n.info/mit-license"
-    }
-  ],
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/fibo/games-of-life/issues"
   },
   "homepage": "http://g14n.info/games-of-life",
   "devDependencies": {
-    "browserify": "^10.2.3",
-    "mocha": "^2.2.5",
-    "should": "^6.0.3"
+    "browserify": "^13.0.0",
+    "mocha": "^2.3.3",
+    "pre-commit": "^1.1.2",
+    "should": "^8.0.2",
+    "standard": "^5.4.1",
+    "uglify-js": "^2.4.24"
   }
 }
