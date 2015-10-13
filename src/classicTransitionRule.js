@@ -1,4 +1,3 @@
-
 var countAliveNeighbours = require('./countAliveNeighbours')
 
 /**
@@ -36,14 +35,14 @@ function classicTransitionRule (a, b, c, getNeighboursOf, isAlive) {
   function nextStatusOf (cell) {
     var numNeighboursAlive = countAliveNeighboursOf(cell)
 
-    if (isAlive(cell))
+    if (isAlive(cell)) {
       return ((numNeighboursAlive >= a) && (numNeighboursAlive <= b))
-    else
+    } else {
       return (numNeighboursAlive === c)
+    }
   }
 
   return nextStatusOf
 }
 
 module.exports = classicTransitionRule
-

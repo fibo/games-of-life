@@ -1,8 +1,10 @@
 # games-of-life
 
-> A Mathematical solution to any Game of Life variation
+> is a Mathematical solution to any [Game of Life][1] variation
 
-[![NPM version](https://badge.fury.io/js/games-of-life.png)](http://badge.fury.io/js/games-of-life) [![Build Status](https://travis-ci.org/fibo/games-of-life.png?branch=master)](https://travis-ci.org/fibo/games-of-life?branch=master) [![Dependency Status](https://gemnasium.com/fibo/games-of-life.png)](https://gemnasium.com/fibo/games-of-life)
+[![NPM version](https://badge.fury.io/js/games-of-life.svg)](http://badge.fury.io/js/games-of-life) [![Build Status](https://travis-ci.org/fibo/games-of-life.svg?branch=master)](https://travis-ci.org/fibo/games-of-life?branch=master) [![Dependency Status](https://gemnasium.com/fibo/games-of-life.svg)](https://gemnasium.com/fibo/games-of-life)
+
+[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
 
 [![NPM](https://nodei.co/npm-dl/games-of-life.png)](https://nodei.co/npm-dl/games-of-life/)
 

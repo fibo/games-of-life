@@ -1,10 +1,7 @@
-
-var should = require('should')
-
 var gamesOfLife = require('games-of-life')
 
-var createWorld    = gamesOfLife.createWorld,
-    transitionRule = gamesOfLife.classicTransitionRule.bind(null, 2, 3, 3)
+var createWorld = gamesOfLife.createWorld
+var transitionRule = gamesOfLife.classicTransitionRule.bind(null, 2, 3, 3)
 
 /**
  * @params {Number} cell represented by an array index
@@ -32,7 +29,6 @@ var world = createWorld(getNeighboursOf)
 var evolve = world(transitionRule)
 
 describe('grid3x3AsMonoDimensionalArray', function () {
-
   function pattern0 (cell) {
     return false
   }
@@ -52,15 +48,17 @@ describe('grid3x3AsMonoDimensionalArray', function () {
   function patternsAreEqual (patternA, patternB) {
     var areEqual = true
 
-    for (var i = 0; i < 9; i++)
-      if (patternA(i) !== patternB(i))
+    for (var i = 0; i < 9; i++) {
+      if (patternA(i) !== patternB(i)) {
         areEqual = false
+      }
+    }
 
     return areEqual
   }
 
   describe('patternsAreEqual', function () {
-    it ('is a reflection', function () {
+    it('is a reflection', function () {
       patternsAreEqual(pattern0, pattern0).should.be.true
       patternsAreEqual(pattern1, pattern1).should.be.true
       patternsAreEqual(horyzontalBlinker, horyzontalBlinker).should.be.true

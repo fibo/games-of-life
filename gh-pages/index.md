@@ -3,15 +3,17 @@ title: games-of-life
 ---
 # games-of-life
 
-> A Mathematical solution to any Game of Life variation
+> is a Mathematical solution to any [Game of Life][1] variation
 
-[![NPM version](https://badge.fury.io/js/games-of-life.png)](http://badge.fury.io/js/games-of-life) [![Build Status](https://travis-ci.org/fibo/games-of-life.png?branch=master)](https://travis-ci.org/fibo/games-of-life?branch=master) [![Dependency Status](https://gemnasium.com/fibo/games-of-life.png)](https://gemnasium.com/fibo/games-of-life)
+[![NPM version](https://badge.fury.io/js/games-of-life.svg)](http://badge.fury.io/js/games-of-life) [![Build Status](https://travis-ci.org/fibo/games-of-life.svg?branch=master)](https://travis-ci.org/fibo/games-of-life?branch=master) [![Dependency Status](https://gemnasium.com/fibo/games-of-life.svg)](https://gemnasium.com/fibo/games-of-life)
 
-[![NPM](https://nodei.co/npm-dl/games-of-life.jpg)](https://nodei.co/npm-dl/games-of-life/)
+[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
+
+[![NPM](https://nodei.co/npm-dl/games-of-life.png)](https://nodei.co/npm-dl/games-of-life/)
 
 ## Demo
 
-[![Hexagonal game of life](http://g14n.info/games-of-life/images/HexagonalGameOfLife-400x300.png)](http://g14n.info/games-of-life/example/hexagonal)
+[![Hexagonal game of life](http://g14n.info/games-of-life/images/HexagonalGameOfLife-400x300.jpg)](http://g14n.info/games-of-life/example/hexagonal)
 
 ## Installation
 
@@ -183,4 +185,4 @@ See also other examples:
 [1]: http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life "Game of Life"
 [2]: http://www.conwaylife.com/wiki/Main_Page "LikeWiki"
 [3]: https://news.ycombinator.com/item?id=9632255 "Hacker News thread"
- 
+

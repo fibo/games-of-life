@@ -1,10 +1,6 @@
-
-var should = require('should')
-
 var countAliveNeighbours = require('..').countAliveNeighbours
 
 describe('countAliveNeighbours', function () {
-
   function getNeighboursOf (index) {
     var neighboursOf = {
       0: [1, 3, 4],
@@ -41,11 +37,11 @@ describe('countAliveNeighbours', function () {
     return secondRow(cell) || secondColumn(cell)
   }
 
-  var countAliveNeighboursOfEmptyGrid    = countAliveNeighbours.bind(null, getNeighboursOf, emptyGrid)
-  var countAliveNeighboursOfFullGrid     = countAliveNeighbours.bind(null, getNeighboursOf, fullGrid)
+  var countAliveNeighboursOfEmptyGrid = countAliveNeighbours.bind(null, getNeighboursOf, emptyGrid)
+  var countAliveNeighboursOfFullGrid = countAliveNeighbours.bind(null, getNeighboursOf, fullGrid)
   var countAliveNeighboursOfSecondColumn = countAliveNeighbours.bind(null, getNeighboursOf, secondColumn)
-  var countAliveNeighboursOfSecondRow    = countAliveNeighbours.bind(null, getNeighboursOf, secondRow)
-  var countAliveNeighboursOfCross        = countAliveNeighbours.bind(null, getNeighboursOf, cross)
+  var countAliveNeighboursOfSecondRow = countAliveNeighbours.bind(null, getNeighboursOf, secondRow)
+  var countAliveNeighboursOfCross = countAliveNeighbours.bind(null, getNeighboursOf, cross)
 
   it('works', function () {
     var i, count

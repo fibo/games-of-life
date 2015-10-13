@@ -1,21 +1,22 @@
-
 var classicTransitionRule = require('./classicTransitionRule')
 
 /**
+ * Create a GoL world.
+ *
  * @params {Function} getNeighboursOf
  * @returns {Function} world
  */
 
 function createWorld (getNeighboursOf) {
-
   /**
    * @params {Function} [transitionRule] defaults to classis GoL transition rule
    * @returns {Function} evolve
    */
 
   function world (transitionRule) {
-    if (typeof transitionRule === 'undefined')
+    if (typeof transitionRule === 'undefined') {
       transitionRule = classicTransitionRule.bind(null, 2, 3, 3)
+    }
 
     /**
      * @params {Function} isAliveNow
@@ -44,4 +45,3 @@ function createWorld (getNeighboursOf) {
 }
 
 module.exports = createWorld
-
