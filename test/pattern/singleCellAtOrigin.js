@@ -1,6 +1,3 @@
-
-var should = require('should')
-
 var gamesOfLife = require('games-of-life')
 
 var singleCellAtOrigin = gamesOfLife.pattern.singleCellAtOrigin
@@ -14,4 +11,3 @@ describe('singleCellAtOrigin', function () {
     singleCellAtOrigin([1, 0]).should.be.false
   })
 })
-
