@@ -74,15 +74,16 @@ Define a *getNeighboursOf* which returns the neighbours of a given cell.
 
 ```
 function getNeighboursOf (cell) {
-  var x = cell[0],
-      y = cell[1]
+  var x = cell[0]
+  var y = cell[1]
 
   var neighbours = []
 
   for (var j = y - 1; j <= y + 1; j++) {
     for (var i = x - 1; i <= x + 1; i++) {
-      if ((i === x) && (j === y))
+      if ((i === x) && (j === y)) {
         continue
+      }
 
       neighbours.push([i, j])
     }
@@ -101,8 +102,8 @@ Create a *Game of Life* world, and get the *evolve* function
 ```
 var gamesOfLife = require('games-of-life')
 
-var createWorld    = gamesOfLife.createWorld,
-    transitionRule = gamesOfLife.classicTransitionRule.bind(null, 2, 3, 3)
+var createWorld    = gamesOfLife.createWorld
+var transitionRule = gamesOfLife.classicTransitionRule.bind(null, 2, 3, 3)
 
 var world = createWorld(infiniteGrid2d)
 
@@ -131,31 +132,35 @@ evolve(singleCellAtTheOrigin) // will always return false too, cause the cell di
 
 Ok, a more interesting example is the blinker
 
-![Blinker](http://upload.wikimedia.org/wikipedia/commons/9/95/Game_of_life_blinker.gif)
+![Blinker](https://upload.wikimedia.org/wikipedia/commons/9/95/Game_of_life_blinker.gif)
 
 ```
 function horyzontalBlinker (cell) {
-  var x = cell[0],
-      y = cell[1]
+  var x = cell[0]
+  var y = cell[1]
 
-  if (y !== 0)
+  if (y !== 0) {
     return false
+  }
 
-  if ((x >= -1) && (x <= 1))
+  if ((x >= -1) && (x <= 1)) {
     return true
+  }
 
   return false
 }
 
 function verticalBlinker (cell) {
-  var x = cell[0],
-      y = cell[1]
+  var x = cell[0]
+  var y = cell[1]
 
-  if (x !== 0)
+  if (x !== 0) {
     return false
+  }
 
-  if ((y >= -1) && (y <= 1))
+  if ((y >= -1) && (y <= 1)) {
     return true
+  }
 
   return false
 }
@@ -164,9 +169,11 @@ function verticalBlinker (cell) {
 You may check that the *verticalBlinker* evolves in the *horyzontalBlinker* and vice versa
 
 ```
-for (var i = -1; i < 1; i++)
-  for (var j = -1; j < 1; j++)
+for (var i = -1; i < 1; i++) {
+  for (var j = -1; j < 1; j++) {
     console.log(evolve(verticalBlinker)(i, j) ===  horyzontalBlinker(i, j)) // true
+  }
+}
 ```
 
 See also other examples:
