@@ -1,21 +1,22 @@
-
-var createWorld    = gamesOfLife.createWorld,
-    transitionRule = gamesOfLife.classicTransitionRule.bind(null, 2, 3, 3),
-    hexagonal      = gamesOfLife.space.hexagonal
+var gamesOfLife = require('games-of-life')
+var createWorld = gamesOfLife.createWorld
+var transitionRule = gamesOfLife.classicTransitionRule.bind(null, 2, 3, 3)
+var hexagonal = gamesOfLife.space.hexagonal
 
 // The example is hexagonal but limited.
 var bound = 3
 
 function limitedHexagonal (bound) {
   function getNeighbours (cell) {
-    var limitedNeighbours = [],
-        neighbours        = hexagonal(cell)
+    var limitedNeighbours = []
+    var neighbours = hexagonal(cell)
 
     for (var i in neighbours) {
       var neighbour = neighbours[i]
 
-      if (neighbour[0] + neighbour[1] <= bound)
+      if (neighbour[0] + neighbour[1] <= bound) {
         limitedNeighbours.push(neighbour)
+      }
     }
 
     return limitedNeighbours
@@ -35,19 +36,20 @@ function selectCell (x, y) {
 }
 
 function isAlive (cell) {
-  var x = cell[0],
-      y = cell[1]
+  var x = cell[0]
+  var y = cell[1]
 
   return $(selectCell(x, y)).hasClass('alive')
 }
 
-$('.hex').click(function() {
+$('.hex').click(function () {
   $(this).toggleClass('alive')
 })
 
-$('#run').click(function() {
-  var nextIsAlive = [],
-      i, j
+$('#run').click(function () {
+  var nextIsAlive = []
+  var i
+  var j
 
   // First compute results of next status.
   for (i = 0 - bound; i <= bound; i++) {
@@ -69,13 +71,14 @@ $('#run').click(function() {
 
       if (nextIsAlive[i][j]) {
         // Gift life to cell.
-        if (! $cell.hasClass('alive'))
+        if (!$cell.hasClass('alive')) {
           $cell.toggleClass('alive')
-      }
-      else {
+        }
+      } else {
         // Kill cell.
-        if ($cell.hasClass('alive'))
+        if ($cell.hasClass('alive')) {
           $cell.toggleClass('alive')
+        }
       }
     }
   }
