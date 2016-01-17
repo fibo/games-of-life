@@ -1,7 +1,7 @@
 {
   "name": "games-of-life",
   "description": "is a Mathematical solution to any Game of Life variation",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "main": "index.js",
   "scripts": {
     "_build": "npm test && npm run browserify && npm run minify && npm run jekyll; git status",
@@ -22,7 +22,7 @@
     "lint_src": "standard src/*",
     "lint_test": "cd test; standard --global describe --global it; cd -",
     "minify": "uglifyjs dist/${npm_package_name}.js --output dist/${npm_package_name}.min.js --compress --mangle",
-    "postversion": "git push origin v${npm_package_version}; npm publish; npm run _push; npm run heroku",
+    "postversion": "git push origin v${npm_package_version}; npm publish; npm run _push",
     "test": "mocha --bail --require should --reporter min --recursive"
   },
   "pre-commit": [

@@ -177,6 +177,7 @@ for (var i = -1; i < 1; i++) {
 ```
 
 See also other examples:
+
 * [grid 3x3 as mono dimensional array](https://github.com/fibo/games-of-life/blob/master/test/example/grid3x3AsMonoDimensionalArray.js)
 * [hexagonal tiles with two dimensional coordinates](https://github.com/fibo/games-of-life/blob/master/test/example/hexagonalTilesWithTwoDimensionalCoordinates.js)
 
