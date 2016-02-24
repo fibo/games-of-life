@@ -26,6 +26,12 @@ With [bower](http://bower.io/) do
 $ bower install games-of-life
 ```
 
+or use a CDN adding this to your HTML page
+
+```
+<script src="https://cdn.rawgit.com/fibo/games-of-life/master/dist/games-of-life.min.js"></script>
+```
+
 ## Idea
 
 Today, the 30th of May 2015, I have participated in a [Coderetreat at Milan XPUG](http://coderetreat.org/events/xpug-milan-coderetreat).

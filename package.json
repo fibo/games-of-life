@@ -11,8 +11,7 @@
     "browserify_dist": "browserify -r ./index.js:${npm_package_name} -o dist/${npm_package_name}.js",
     "browserify_test": "browserify test/*.js -o gh-pages/test/bundle.js",
     "check-deps": "npm outdated",
-    "cp": "npm run cp_dist; npm run cp_package.json",
-    "cp_dist": "cp -r dist/ gh-pages/",
+    "cp": "npm run cp_package.json",
     "cp_package.json": "cp package.json gh-pages/_data/",
     "gh-pages_push": "git subtree --prefix gh-pages push origin gh-pages",
     "gh-pages_pull": "git subtree --prefix gh-pages pull origin gh-pages",
@@ -21,7 +20,7 @@
     "lint": "npm run lint_src; npm run lint_test",
     "lint_src": "standard src/*",
     "lint_test": "cd test; standard --global describe --global it; cd -",
-    "minify": "uglifyjs dist/${npm_package_name}.js --output dist/${npm_package_name}.min.js --compress --mangle",
+    "minify": "cd dist; uglifyjs ${npm_package_name}.js --source-map ${npm_package_name}.map --output ${npm_package_name}.min.js --compress --mangle --preamble \"// ${npm_package_name}.js ${npm_package_homepage} \n// license ${npm_package_license}\"; cd -",
     "postversion": "git push origin v${npm_package_version}; npm publish; npm run _push",
     "test": "mocha --bail --require should --reporter min --recursive"
   },
