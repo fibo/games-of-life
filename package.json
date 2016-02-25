@@ -52,7 +52,7 @@
     "mocha": "^2.3.3",
     "pre-commit": "^1.1.2",
     "should": "^8.0.2",
-    "standard": "^5.4.1",
+    "standard": "^6.0.7",
     "uglify-js": "^2.4.24"
   }
 }
