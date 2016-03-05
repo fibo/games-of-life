@@ -2,6 +2,15 @@
 
 > is a Mathematical solution to any [Game of Life][1] variation
 
+**Table of Contents**
+
+* [Demo](#demo)
+* [Installation](#installation)
+* [Idea](#idea)
+* [Example](#example)
+* [See also](#see-also)
+* [License](#license)
+
 [![NPM version](https://badge.fury.io/js/games-of-life.svg)](http://badge.fury.io/js/games-of-life) [![Build Status](https://travis-ci.org/fibo/games-of-life.svg?branch=master)](https://travis-ci.org/fibo/games-of-life?branch=master) [![Dependency Status](https://gemnasium.com/fibo/games-of-life.svg)](https://gemnasium.com/fibo/games-of-life) [![Test page](https://img.shields.io/badge/test-page-blue.svg)](http://g14n.info/games-of-life/test)
 
 [![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
@@ -184,7 +193,7 @@ See also other examples:
 * [grid 3x3 as mono dimensional array](https://github.com/fibo/games-of-life/blob/master/test/example/grid3x3AsMonoDimensionalArray.js)
 * [hexagonal tiles with two dimensional coordinates](https://github.com/fibo/games-of-life/blob/master/test/example/hexagonalTilesWithTwoDimensionalCoordinates.js)
 
-## Links
+## See also
 
 * [LifeWiki][2]
 * [Hacker News thread][3]
