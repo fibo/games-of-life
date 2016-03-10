@@ -14,8 +14,10 @@ Changelog format adheres to [Keep a Changelog](http://keepachangelog.com/)</sub>
 
 ## [Unreleased]
 
-## [0.4.0] - 
+## [0.4.0] - 2016-03-10
+
 ### Added
+
 - CHANGELOG.md
 - CDN installation instructions
 - svg badges and github social badges
