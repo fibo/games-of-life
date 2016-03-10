@@ -11,7 +11,9 @@
 * [See also](#see-also)
 * [License](#license)
 
-[![NPM version](https://badge.fury.io/js/games-of-life.svg)](http://badge.fury.io/js/games-of-life) [![Build Status](https://travis-ci.org/fibo/games-of-life.svg?branch=master)](https://travis-ci.org/fibo/games-of-life?branch=master) [![Dependency Status](https://gemnasium.com/fibo/games-of-life.svg)](https://gemnasium.com/fibo/games-of-life) [![Test page](https://img.shields.io/badge/test-page-blue.svg)](http://g14n.info/games-of-life/test)
+[![NPM version](https://badge.fury.io/js/games-of-life.svg)](http://badge.fury.io/js/games-of-life) [![Build Status](https://travis-ci.org/fibo/games-of-life.svg?branch=master)](https://travis-ci.org/fibo/games-of-life?branch=master) [![Dependency Status](https://gemnasium.com/fibo/games-of-life.svg)](https://gemnasium.com/fibo/games-of-life) [![Test page](https://img.shields.io/badge/test-page-blue.svg)](http://g14n.info/games-of-life/test) [![Change log](https://img.shields.io/badge/change-log-blue.svg)](http://g14n.info/games-of-life/changelog)
+
+[![Whatchers](http://g14n.info/svg/github/watchers/games-of-life.svg)](https://github.com/fibo/games-of-life/watchers) [![Stargazers](http://g14n.info/svg/github/stars/games-of-life.svg)](https://github.com/fibo/games-of-life/stargazers) [![Forks](http://g14n.info/svg/github/forks/games-of-life.svg)](https://github.com/fibo/games-of-life/network/members)
 
 [![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
 
