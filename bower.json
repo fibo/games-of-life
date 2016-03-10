@@ -1,6 +1,10 @@
 {
   "name": "games-of-life",
-  "main": "dist/games-of-life.js",
+  "main": [
+    "dist/games-of-life.js",
+    "dist/games-of-life.map",
+    "dist/games-of-life.min.js"
+  ],
   "homepage": "http://g14n.info/games-of-life",
   "authors": [
     "Gianluca Casati"
