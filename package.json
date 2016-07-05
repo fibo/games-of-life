@@ -2,13 +2,13 @@
   "name": "games-of-life",
   "description": "is a Mathematical solution to any Game of Life variation",
   "version": "0.4.0",
-  "main": "index.js",
+  "main": "src/games-of-life.js",
   "scripts": {
     "build": "npm test && npm run browserify && npm run minify && npm run jekyll; git status",
     "push": "git push origin master && npm run gh-pages_push",
     "pull": "git pull origin master && npm run gh-pages_pull",
     "browserify": "for x in dist test; do npm run browserify_$x; done",
-    "browserify_dist": "browserify -r ./index.js:${npm_package_name} -o dist/${npm_package_name}.js",
+    "browserify_dist": "browserify -r ./src/${npm_package_name}.js:${npm_package_name} -o dist/${npm_package_name}.js",
     "browserify_test": "browserify test/*.js -o gh-pages/test/bundle.js",
     "check-deps": "npm outdated",
     "cp": "npm run cp_package.json",
@@ -20,9 +20,12 @@
     "lint": "npm run lint_src; npm run lint_test",
     "lint_src": "standard src/*",
     "lint_test": "cd test; standard --global describe --global it; cd -",
-    "minify": "cd dist; uglifyjs ${npm_package_name}.js --source-map ${npm_package_name}.map --output ${npm_package_name}.min.js --compress --mangle --preamble \"// ${npm_package_name}.js ${npm_package_homepage} \n// license ${npm_package_license}\"; cd -",
+    "minify": "cd dist; uglifyjs ${npm_package_name}.js --source-map ${npm_package_name}.map --output ${npm_package_name}.min.js --compress --mangle --preamble \"// Software: ${npm_package_name}\n// Homepage: ${npm_package_homepage}\n// License: ${npm_package_license}\"; cd -",
+    "postupdate-deps": "npm test && git commit -am 'updated deps' || git checkout -- package.json",
     "postversion": "git push origin v${npm_package_version}; npm publish; npm run _push",
-    "test": "mocha --bail --require should --reporter min --recursive"
+    "start": "NODE_PATH=src budo demo/index.js --live --open -- -t babelify",
+    "test": "mocha --bail --require should --reporter min --recursive",
+    "update-deps": "npm update --save --dev"
   },
   "pre-commit": [
     "check-deps",
@@ -53,6 +56,7 @@
     "pre-commit": "^1.1.2",
     "should": "^8.0.2",
     "standard": "^6.0.7",
-    "uglify-js": "^2.4.24"
+    "uglify-js": "^2.4.24",
+    "zeroconf-redux": "^0.3.0"
   }
 }

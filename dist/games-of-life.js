@@ -115,19 +115,6 @@ module.exports = createWorld
 
 },{"./classicTransitionRule":1}],4:[function(require,module,exports){
 
-exports.classicTransitionRule = require('./classicTransitionRule')
-
-exports.countAliveNeighbours = require('./countAliveNeighbours')
-
-exports.createWorld = require('./createWorld')
-
-exports.pattern = require('./pattern')
-
-exports.space = require('./space')
-
-
-},{"./classicTransitionRule":1,"./countAliveNeighbours":2,"./createWorld":3,"./pattern":6,"./space":10}],5:[function(require,module,exports){
-
 /**
  * @returns {Boolean} false
  */
@@ -139,7 +126,7 @@ function emptySpace () {
 module.exports = emptySpace
 
 
-},{}],6:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 
 exports.emptySpace = require('./emptySpace')
 
@@ -148,7 +135,7 @@ exports.singleCell = require('./singleCell')
 exports.singleCellAtOrigin = require('./singleCellAtOrigin')
 
 
-},{"./emptySpace":5,"./singleCell":7,"./singleCellAtOrigin":8}],7:[function(require,module,exports){
+},{"./emptySpace":4,"./singleCell":6,"./singleCellAtOrigin":7}],6:[function(require,module,exports){
 
 var singleCellAtOrigin = require('./singleCellAtOrigin')
 
@@ -174,7 +161,7 @@ function singleCell (coordinates) {
 module.exports = singleCell
 
 
-},{"./singleCellAtOrigin":8}],8:[function(require,module,exports){
+},{"./singleCellAtOrigin":7}],7:[function(require,module,exports){
 
 /**
  * @params {Array} cell
@@ -192,7 +179,7 @@ function singleCellAtOrigin (cell) {
 module.exports = singleCellAtOrigin
 
 
-},{}],9:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 
 /**
  * Defines an hexagonal tiling with well defined 2d coordinates
@@ -267,14 +254,22 @@ function hexagonal (cell) {
 module.exports = hexagonal
 
 
-},{}],10:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 
 exports.hexagonal = require('./hexagonal')
 
 
-},{"./hexagonal":9}],"games-of-life":[function(require,module,exports){
+},{"./hexagonal":8}],"games-of-life":[function(require,module,exports){
 
-module.exports = require('./src/')
+exports.classicTransitionRule = require('./classicTransitionRule')
+
+exports.countAliveNeighbours = require('./countAliveNeighbours')
+
+exports.createWorld = require('./createWorld')
+
+exports.pattern = require('./pattern')
+
+exports.space = require('./space')
 
 
-},{"./src/":4}]},{},[]);
+},{"./classicTransitionRule":1,"./countAliveNeighbours":2,"./createWorld":3,"./pattern":5,"./space":9}]},{},[]);

@@ -1,9 +1,4 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-
-module.exports = require('./src/')
-
-
-},{"./src/":5}],2:[function(require,module,exports){
 var countAliveNeighbours = require('./countAliveNeighbours')
 
 /**
@@ -53,7 +48,7 @@ function classicTransitionRule (a, b, c, getNeighboursOf, isAlive) {
 
 module.exports = classicTransitionRule
 
-},{"./countAliveNeighbours":3}],3:[function(require,module,exports){
+},{"./countAliveNeighbours":2}],2:[function(require,module,exports){
 
 /**
  * @params {Function} getNeighboursOf
@@ -69,7 +64,7 @@ function countAliveNeighbours (getNeighboursOf, isAlive, cell) {
 module.exports = countAliveNeighbours
 
 
-},{}],4:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 var classicTransitionRule = require('./classicTransitionRule')
 
 /**
@@ -118,7 +113,7 @@ function createWorld (getNeighboursOf) {
 
 module.exports = createWorld
 
-},{"./classicTransitionRule":2}],5:[function(require,module,exports){
+},{"./classicTransitionRule":1}],4:[function(require,module,exports){
 
 exports.classicTransitionRule = require('./classicTransitionRule')
 
@@ -131,7 +126,7 @@ exports.pattern = require('./pattern')
 exports.space = require('./space')
 
 
-},{"./classicTransitionRule":2,"./countAliveNeighbours":3,"./createWorld":4,"./pattern":7,"./space":11}],6:[function(require,module,exports){
+},{"./classicTransitionRule":1,"./countAliveNeighbours":2,"./createWorld":3,"./pattern":6,"./space":10}],5:[function(require,module,exports){
 
 /**
  * @returns {Boolean} false
@@ -144,7 +139,7 @@ function emptySpace () {
 module.exports = emptySpace
 
 
-},{}],7:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 
 exports.emptySpace = require('./emptySpace')
 
@@ -153,7 +148,7 @@ exports.singleCell = require('./singleCell')
 exports.singleCellAtOrigin = require('./singleCellAtOrigin')
 
 
-},{"./emptySpace":6,"./singleCell":8,"./singleCellAtOrigin":9}],8:[function(require,module,exports){
+},{"./emptySpace":5,"./singleCell":7,"./singleCellAtOrigin":8}],7:[function(require,module,exports){
 
 var singleCellAtOrigin = require('./singleCellAtOrigin')
 
@@ -179,7 +174,7 @@ function singleCell (coordinates) {
 module.exports = singleCell
 
 
-},{"./singleCellAtOrigin":9}],9:[function(require,module,exports){
+},{"./singleCellAtOrigin":8}],8:[function(require,module,exports){
 
 /**
  * @params {Array} cell
@@ -197,7 +192,7 @@ function singleCellAtOrigin (cell) {
 module.exports = singleCellAtOrigin
 
 
-},{}],10:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 
 /**
  * Defines an hexagonal tiling with well defined 2d coordinates
@@ -272,12 +267,12 @@ function hexagonal (cell) {
 module.exports = hexagonal
 
 
-},{}],11:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 
 exports.hexagonal = require('./hexagonal')
 
 
-},{"./hexagonal":10}],12:[function(require,module,exports){
+},{"./hexagonal":9}],11:[function(require,module,exports){
 var countAliveNeighbours = require('..').countAliveNeighbours
 
 describe('countAliveNeighbours', function () {
@@ -354,4 +349,4 @@ describe('countAliveNeighbours', function () {
 })
 
 
-},{"..":1}]},{},[12]);
+},{"..":4}]},{},[11]);
