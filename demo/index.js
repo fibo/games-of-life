@@ -6,8 +6,11 @@ var hexagonal = gamesOfLife.space.hexagonal
 var React = require('react')
 var render = require('react-dom').render
 var Provider = require('react-redux').Provider
+import configureStore from './store/configureStore'
+import App from './containers/App'
 
 var containerId = 'demo'
+const store = configureStore()
 
 var container = document.getElementById(containerId)
 
@@ -19,7 +22,7 @@ if (!container) {
 
 render(
   <Provider store={store}>
-    <App view={{ container }} />
+    <App/>
   </Provider>,
   container
 )
