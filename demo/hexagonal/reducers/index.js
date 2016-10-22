@@ -1,16 +1,18 @@
-import { NEXT_ITERATION, TOGGLE_CELL } from '../actions'
+import {
+  TOGGLE_CELL
+} from '../actions'
 
-const initialState = {
+export default function (state, action) {
+  const current = Object.assign({}, state)
 
-}
+  const id = action.id
 
-export default function (state = initialState, action) {
   switch (action.type) {
-    case NEXT_ITERATION:
-      return state
     case TOGGLE_CELL:
-      return state
+      current.alive[id] = !current.alive[id]
+      return current
+
     default:
-      return state
+      return current
   }
 }

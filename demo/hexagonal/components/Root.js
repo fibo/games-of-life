@@ -1,15 +1,21 @@
-import React, { PropTypes } from 'react'
-import Hexagon from './Hexagon'
+import React from 'react'
+import World from './World'
 
-const Root = ({}) => (
+const Root = ({
+  alive,
+  coordinate,
+  dispatch,
+  isRunning
+}) => (
   <div>
-  <div>
-    <Hexagon fill='#AAAAA' />
-    <Hexagon fill='#AAAAA' />
-    <Hexagon fill='#AAAAA' />
-    <Hexagon fill='#AAAAA' />
-  </div>
+    <button>start</button>
+    <World
+      coordinate={coordinate} alive={alive}
+      dispatch={dispatch}
+      height={600} width={800}
+      isRunning={isRunning}
+    />
   </div>
 )
 
-module.exports = Root;
+export default Root

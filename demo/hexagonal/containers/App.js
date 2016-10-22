@@ -1,16 +1,6 @@
 import Root from '../components/Root'
 import { connect } from 'react-redux'
 
-const mapStateToProps = (state, ownProps) => {
-  return state
-}
+const mapStateToProps = (state) => state
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-  }
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Root)
+export default connect(mapStateToProps)(Root)
