@@ -1,0 +1,235 @@
+<!doctype>
+<html>
+  <head>
+    <style>
+      .row {
+        clear: both;
+      }
+
+      .cell {
+        float: left;
+        width: 40px;
+        height: 40px;
+      }
+
+      .cell.dead {
+        background-color: gray;
+      }
+
+      .cell.alive {
+        background-color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>game of life</h1>
+      <button onclick="evolve()">Run</button>
+      <div id="world">
+        <div class="row">
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+        </div>
+        <div class="row">
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+        </div>
+        <div class="row">
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+        </div>
+        <div class="row">
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+        </div>
+        <div class="row">
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+        </div>
+        <div class="row">
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+        </div>
+        <div class="row">
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell dead"></div>
+          <div class="cell dead"></div>
+          <div class="cell dead"></div>
+          <div class="cell dead"></div>
+          <div class="cell dead"></div>
+          <div class="cell dead"></div>
+          <div class="cell dead"></div>
+        </div>
+        <div class="row">
+          <div class="cell alive"></div>
+          <div class="cell dead"></div>
+          <div class="cell dead"></div>
+          <div class="cell dead"></div>
+          <div class="cell dead"></div>
+          <div class="cell dead"></div>
+          <div class="cell dead"></div>
+          <div class="cell dead"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+        </div>
+        <div class="row">
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+        </div>
+        <div class="row">
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+          <div class="cell alive"></div>
+        </div>
+      </div>
+      <script>
+        var cells = document.getElementsByClassName('cell')
+
+        for (var i = 0; i < cells.length; i++) {
+          var cell = cells[i]
+          cell.onclick = function (e) {
+            var className = e.target.className
+
+            if (className === 'cell dead') e.target.className = 'cell alive'
+            else e.target.className = 'cell dead'
+          }
+        }
+
+        function getCell([x, y]) {
+          var world = document.getElementById('world')
+          var rows = world.children
+
+          var indexX = x
+          if (indexX === -1) indexX = rows.length -1
+          if (indexX === rows.length) indexX = 0
+
+          var row = rows[indexX]
+
+          var cells = row.children
+
+          var indexY = y
+          if (indexY === -1) indexY = cells.length -1
+          if (indexY === cells.length) indexY = 0
+
+          return cells[y % row.children.length]
+        }
+
+        // console.log(getCell([4, 40]))
+        function evolve () {
+          var currentState = []
+          var x, y
+          var width = 10
+          var height = 10
+          var nextState = []
+          var currentRow
+          var currentCell
+
+          for (x = 0; x < height; x++) {
+            currentRow = []
+
+            for (y = 0; y < width; y++) {
+              currentCell = getCell([x, y])
+
+              isAlive = currentCell.className === 'cell alive'
+
+              currentRow.push(isAlive)
+            }
+
+            currentState.push(currentRow)
+          }
+
+
+          for (x = 0; x < height; x++) {
+            currentRow = []
+
+            for (y = 0; y < width; y++) {
+                console.log(getCell([x-1, y-1]))
+              /*
+              var neighbours = [
+                getCell([x-1,y-1]), getCell([x,y-1]), getCell([x+1,y-1]),
+                getCell([x-1,y]),                     getCell([x+1,y]),
+                getCell([x-1,y+1]), getCell([x,y+1]), getCell([x+1,y+1])
+              ]
+
+              var countAliveNeighbours = neighbours.filter(function (cell) {
+                return cell.className === 'cell alive'
+              }).length
+
+              console.log(countAliveNeighbours)
+
+              currentRow.push(countAliveNeighbours)
+            }
+
+            nextState.push(currentRow)
+            */
+
+            }
+          }
+        }
+      </script>
+  </body>
+</html>
