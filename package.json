@@ -9,7 +9,7 @@
     "pull": "git pull origin master && npm run gh-pages_pull",
     "browserify": "for x in demo dist test; do npm run browserify_$x; done",
     "browserify_dist": "browserify -r ./src/${npm_package_name}.js:${npm_package_name} -o dist/${npm_package_name}.js",
-    "browserify_demo": "NODE_ENV=production NODE_PATH=src browserify demo/index.js -t babelify -o gh-pages/js/demo.js",
+    "browserify_demo": "NODE_ENV=production NODE_PATH=src browserify demo/hexagonal/index.js -t babelify -o gh-pages/js/demo-hexagonal.js",
     "browserify_test": "browserify test/*.js -o gh-pages/test/bundle.js",
     "check-deps": "npm outdated",
     "cp": "npm run cp_package.json",
@@ -24,7 +24,7 @@
     "minify": "cd dist; uglifyjs ${npm_package_name}.js --source-map ${npm_package_name}.map --output ${npm_package_name}.min.js --compress --mangle --preamble \"// Software: ${npm_package_name}\n// Homepage: ${npm_package_homepage}\n// License: ${npm_package_license}\"; cd -",
     "postupdate-deps": "npm test && git commit -am 'updated deps' || git checkout -- package.json",
     "postversion": "git push origin v${npm_package_version}; npm publish; npm run _push",
-    "start": "NODE_PATH=src budo demo/index.js --live --open -- -t babelify",
+    "start": "NODE_PATH=src budo demo/hexagonal/index.js --live --open -- -t babelify",
     "test": "mocha --bail --require should --reporter min --recursive",
     "update-deps": "npm update --save --dev"
   },
@@ -52,13 +52,12 @@
   },
   "homepage": "http://g14n.info/games-of-life",
   "devDependencies": {
-    "browserify": "^13.0.0",
-    "mocha": "^2.3.3",
-    "pre-commit": "^1.1.2",
-    "redux-thunk": "^2.1.0",
-    "should": "^8.0.2",
-    "standard": "^6.0.7",
-    "uglify-js": "^2.4.24",
-    "zeroconf-redux": "^0.3.0"
+    "browserify": "13.x",
+    "mocha": "3.x",
+    "pre-commit": "1.x",
+    "should": "11.x",
+    "standard": "8.x",
+    "uglify-js": "2.x",
+    "zeroconf-redux": "^0.8.1"
   }
 }
