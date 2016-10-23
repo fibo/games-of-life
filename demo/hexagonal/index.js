@@ -3,15 +3,14 @@
 // var transitionRule = gamesOfLife.classicTransitionRule.bind(null, 2, 3, 3)
 // var hexagonal = gamesOfLife.space.hexagonal
 
+import 'babel-polyfill'
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import configureStore from './store/configureStore'
 import App from './containers/App'
 
-import initialState from './store/initialState.json'
-
-const store = configureStore(initialState)
+const store = configureStore()
 
 const containerId = 'demo'
 var container = document.getElementById(containerId)
