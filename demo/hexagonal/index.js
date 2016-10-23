@@ -6,11 +6,7 @@
 import 'babel-polyfill'
 import React from 'react'
 import { render } from 'react-dom'
-import { Provider } from 'react-redux'
-import configureStore from './store/configureStore'
-import App from './containers/App'
-
-const store = configureStore()
+import Root from './components/Root'
 
 const containerId = 'demo'
 var container = document.getElementById(containerId)
@@ -21,9 +17,4 @@ if (!container) {
   document.body.appendChild(container)
 }
 
-render(
-  <Provider store={store}>
-    <App/>
-  </Provider>,
-  container
-)
+render(<Root />, container)

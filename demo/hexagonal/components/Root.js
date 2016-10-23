@@ -1,21 +1,38 @@
-import React from 'react'
+import React, { Component } from 'react'
 import World from './World'
+import { isRunning } from '../store/initialState'
 
-const Root = ({
-  alive,
-  coordinate,
-  dispatch,
-  isRunning
-}) => (
-  <div>
-    <button>start</button>
-    <World
-      coordinate={coordinate} alive={alive}
-      dispatch={dispatch}
-      height={600} width={800}
-      isRunning={isRunning}
-    />
-  </div>
-)
+class Root extends Component {
+  constructor () {
+    super()
+
+    this.state = { isRunning }
+  }
+
+  render () {
+    const {
+      isRunning
+    } = this.state
+
+    const toggleIsRunning = () => {
+      this.setState({ isRunning: !isRunning })
+    }
+
+    return (
+      <div>
+        <div>
+          <button onClick={toggleIsRunning}>{isRunning ? 'stop' : 'start'}</button>
+        </div>
+        <div>
+          <World
+            isRunning={isRunning}
+            height={600}
+            width={800}
+          />
+        </div>
+      </div>
+    )
+  }
+}
 
 export default Root
