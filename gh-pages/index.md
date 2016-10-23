@@ -30,7 +30,7 @@ I created this hexagonal *Game of Life* demo to show that this package generaliz
 the *Game of Life* in any of its variations.
 Click the image below to try it!
 
-[![Hexagonal game of life](http://g14n.info/games-of-life/images/HexagonalGameOfLife-400x300.jpg)](http://g14n.info/games-of-life/demo/hexagonal)
+[![Hexagonal game of life](http://g14n.info/games-of-life/svg/HexagonalGameOfLife.svg)](http://g14n.info/games-of-life/demo/hexagonal)
 
 ## Installation
 

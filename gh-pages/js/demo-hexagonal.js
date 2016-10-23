@@ -310,6 +310,7 @@ World.propTypes = {
 
 World.defaultProps = {
   height: 300,
+  isRunning: false,
   quantumTime: 1000,
   width: 400
 };

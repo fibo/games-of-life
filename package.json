@@ -11,13 +11,14 @@
     "browserify_dist": "browserify -r ./src/${npm_package_name}.js:${npm_package_name} -o dist/${npm_package_name}.js",
     "browserify_demo": "NODE_ENV=production NODE_PATH=src browserify demo/hexagonal/index.js -t babelify -o gh-pages/js/demo-hexagonal.js",
     "check-deps": "npm outdated",
+    "generateDemoSVG": "NODE_PATH=src demo/hexagonal/generateSVG.js > gh-pages/svg/HexagonalGameOfLife.svg",
     "gh-pages_data": "npm run gh-pages_data_package.json; npm run gh-pages_data_tags.json",
     "gh-pages_data_package.json": "cp package.json gh-pages/_data/",
     "gh-pages_data_tags.json": "wget https://api.github.com/repos/fibo/${npm_package_name}/tags -O gh-pages/_data/tags.json",
     "gh-pages_push": "git subtree --prefix gh-pages push origin gh-pages",
     "gh-pages_pull": "git subtree --prefix gh-pages pull origin gh-pages",
     "homepage": "echo \"---\ntitle: $npm_package_name\n---\" > gh-pages/index.md; cat README.md >> gh-pages/index.md",
-    "jekyll": "npm run homepage; npm run gh-pages_data; cd gh-pages; jekyll build; cd ..",
+    "jekyll": "npm run homepage; npm run generateDemoSVG npm run gh-pages_data; cd gh-pages; jekyll build; cd ..",
     "lint": "npm run lint_demo; npm run lint_src; npm run lint_test",
     "lint_demo": "standard demo/*",
     "lint_src": "standard src/*",
@@ -58,6 +59,7 @@
     "pre-commit": "1.x",
     "should": "11.x",
     "standard": "8.x",
+    "svgx": "^0.6.1",
     "uglify-js": "2.x",
     "zeroconf-redux": "^0.8.1"
   }
