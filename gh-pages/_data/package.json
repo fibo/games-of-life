@@ -1,16 +1,15 @@
 {
   "name": "games-of-life",
   "description": "is a Mathematical solution to any Game of Life variation",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "main": "src/games-of-life.js",
   "scripts": {
     "build": "npm test && npm run browserify && npm run minify && npm run jekyll; git status",
     "push": "git push origin master && npm run gh-pages_push",
     "pull": "git pull origin master && npm run gh-pages_pull",
-    "browserify": "for x in demo dist test; do npm run browserify_$x; done",
+    "browserify": "for x in demo dist; do npm run browserify_$x; done",
     "browserify_dist": "browserify -r ./src/${npm_package_name}.js:${npm_package_name} -o dist/${npm_package_name}.js",
     "browserify_demo": "NODE_ENV=production NODE_PATH=src browserify demo/hexagonal/index.js -t babelify -o gh-pages/js/demo-hexagonal.js",
-    "browserify_test": "browserify test/*.js -o gh-pages/test/bundle.js",
     "check-deps": "npm outdated",
     "gh-pages_data": "npm run gh-pages_data_package.json; npm run gh-pages_data_tags.json",
     "gh-pages_data_package.json": "cp package.json gh-pages/_data/",
