@@ -1,6 +1,7 @@
 import React, { PropTypes, Component } from 'react'
 import Hexagon from './Hexagon'
 import { alive, coordinate } from '../store/initialState'
+import gamesOfLife from 'games-of-life'
 
 class World extends Component {
   constructor () {
@@ -12,18 +13,72 @@ class World extends Component {
     }
   }
 
+  componentDidMount () {
+    const getNeighboursOf = this.getNeighboursOf.bind(this)
+
+    this.evolveRule = gamesOfLife.createWorld(getNeighboursOf)(/* use default transition rule */)
+  }
+
+  /**
+   * Compute neighbours of a cell.
+   * Since the world in this example is limited, it is just
+   * the hexagonal world provided by games-of-life package but
+   * filtered by cells that are outside the viewport.
+   */
+
+  getNeighboursOf (coord) {
+    const allNeighbours = gamesOfLife.space.hexagonal(coord)
+
+    return allNeighbours.filter((coord) => (this.idOf(coord) !== null))
+  }
+
+  /**
+   * This is not about Darwin theory, neither about Darwin kernel...
+   */
+
   evolve () {
     const {
-      alive
+      alive,
+      coordinate
     } = this.state
+
+    const isAliveNow = (coord) => {
+      const cellId = this.idOf(coord)
+      return this.state.alive[cellId]
+    }
+
+    const isAliveNext = this.evolveRule(isAliveNow)
 
     let nextAlive = {}
 
     Object.keys(alive).forEach((id) => {
-      nextAlive[id] = !alive[id]
+      nextAlive[id] = isAliveNext(coordinate[id])
     })
 
     this.setState({ alive: nextAlive })
+  }
+
+  /**
+   * Returns the id of the cell, by its coordinates.
+   *
+   * @param {Array} coord
+   * @returns {String} cellId
+   */
+
+  idOf (coord) {
+    const coordinate = this.state.coordinate
+    let cellId = null
+
+    Object.keys(coordinate).forEach((id) => {
+      if (cellId) return
+
+      const xCoordAreEqual = (coord[0] === coordinate[id][0])
+      const yCoordAreEqual = (coord[1] === coordinate[id][1])
+
+      if (xCoordAreEqual && yCoordAreEqual) cellId = id
+    })
+
+    return cellId
   }
 
   render () {
