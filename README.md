@@ -28,7 +28,7 @@ I created this hexagonal *Game of Life* demo to show that this package generaliz
 the *Game of Life* in any of its variations.
 Click the image below to try it!
 
-[![Hexagonal game of life](http://g14n.info/games-of-life/images/HexagonalGameOfLife-400x300.jpg)](http://g14n.info/games-of-life/example/hexagonal)
+[![Hexagonal game of life](http://g14n.info/games-of-life/images/HexagonalGameOfLife-400x300.jpg)](http://g14n.info/games-of-life/demo/hexagonal)
 
 ## Installation
 
@@ -197,15 +197,17 @@ for (var i = -1; i < 1; i++) {
 }
 ```
 
-See also other examples:
-
-* [grid 3x3 as mono dimensional array](https://github.com/fibo/games-of-life/blob/master/test/example/grid3x3AsMonoDimensionalArray.js)
-* [hexagonal tiles with two dimensional coordinates](https://github.com/fibo/games-of-life/blob/master/test/example/hexagonalTilesWithTwoDimensionalCoordinates.js)
-
 ## See also
+
+External links:
 
 * [LifeWiki][2]
 * [Hacker News thread][3]
+
+Other examples:
+
+* [grid 3x3 as mono dimensional array](https://github.com/fibo/games-of-life/blob/master/test/example/grid3x3AsMonoDimensionalArray.js)
+* [hexagonal tiles with two dimensional coordinates](https://github.com/fibo/games-of-life/blob/master/test/example/hexagonalTilesWithTwoDimensionalCoordinates.js)
 
 ## License
 
