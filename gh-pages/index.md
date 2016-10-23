@@ -27,6 +27,10 @@ title: games-of-life
 
 ## Demo
 
+I created this hexagonal *Game of Life* demo to show that this package generalize
+the *Game of Life* in any of its variations.
+Click the image below to try it!
+
 [![Hexagonal game of life](http://g14n.info/games-of-life/images/HexagonalGameOfLife-400x300.jpg)](http://g14n.info/games-of-life/example/hexagonal)
 
 ## Installation
@@ -34,13 +38,13 @@ title: games-of-life
 With [npm](https://npmjs.org/) do
 
 ```bash
-$ npm install games-of-life
+npm install games-of-life
 ```
 
 With [bower](http://bower.io/) do
 
 ```bash
-$ bower install games-of-life
+bower install games-of-life
 ```
 
 or use a CDN adding this to your HTML page
@@ -51,7 +55,7 @@ or use a CDN adding this to your HTML page
 
 ## Idea
 
-Today, the 30th of May 2015, I have participated in a [Coderetreat at Milan XPUG](http://coderetreat.org/events/xpug-milan-coderetreat).
+On the 30th of May 2015, I have participated in a [Coderetreat at Milan XPUG](http://coderetreat.org/events/xpug-milan-coderetreat).
 
 We have had so much fun coding implementations of the [Game of Life][1].
 
@@ -59,13 +63,13 @@ As a mathematician, I think it is a very interesting problem. I couldn't resist 
 
 Let's start with some abstractions.
 
-The definition of a function *getNeighboursOf* which returns the set of cells adjacent to a given cell, it defines a universe of a *Game of Life*.
+A function *getNeighboursOf*, which returns the set of cells adjacent to a given cell, defines the shape of *Game of Life* universe.
 
 Infact, since
 
     getNeighboursOf(cell1) = getNeightboursOf(cell2) ⇒ cell1 = cell2
 
-it can be said that the set of neighbours of a cell is dual to the cell itself, hence the definition of the *getNeighboursOf* function it is equivalent to the definition of the space of a *Game of Life* universe. Note that it defines the concept of **nearness**.
+it can be said that the set of neighbours of a cell is dual to the cell itself, hence the definition of the *getNeighboursOf* function is equivalent to the definition of the space of a *Game of Life* universe. Note that it defines the concept of **nearness**.
 
 In other words,
 
@@ -74,7 +78,7 @@ In other words,
 On the other hand, let be given the definition of an *isAlive* function, which returns true if the given cell is alive, false otherwise.
 It can be easily extended to an *areAlive* function which returns a list of booleans, given a list of cells and, following a similar identification we used for the *getNeighboursOf* function, an *isAlive* function describes the state of a *Game of Life* universe at a given moment.
 
-The considerations above allow to implement an **abstract** *Game of Life* in a functional way, in any of its variations in the finite dimensional case, for example:
+The considerations above allow to implement an **abstract** *Game of Life* in a functional way, in any of its variations, for example:
 
 * finite grid
 * infinite grid
@@ -92,7 +96,7 @@ A simple example is the [infinite grid with two dimensional coordinates](https:/
 
 Define a *getNeighboursOf* which returns the neighbours of a given cell.
 
-```
+```javascript
 function getNeighboursOf (cell) {
   var x = cell[0]
   var y = cell[1]
@@ -119,7 +123,7 @@ var infiniteGrid2d = getNeighboursOf
 
 Create a *Game of Life* world, and get the *evolve* function
 
-```
+```javascript
 var gamesOfLife = require('games-of-life')
 
 var createWorld    = gamesOfLife.createWorld
@@ -132,7 +136,7 @@ var evolve = world(transitionRule)
 
 The empty grid is represented by a function that always returns false, so
 
-```
+```javascript
 function emptyGrid () {
   return false
 }
@@ -142,7 +146,7 @@ evolve(emptyGrid) // will always return false
 
 Try with a single cell at the origin
 
-```
+```javascript
 function singleCellAtTheOrigin (cell) {
   return ((cell[0] === 0) && (cell[1] === 0))
 }
@@ -154,7 +158,7 @@ Ok, a more interesting example is the blinker
 
 ![Blinker](https://upload.wikimedia.org/wikipedia/commons/9/95/Game_of_life_blinker.gif)
 
-```
+```javascript
 function horyzontalBlinker (cell) {
   var x = cell[0]
   var y = cell[1]
@@ -188,7 +192,7 @@ function verticalBlinker (cell) {
 
 You may check that the *verticalBlinker* evolves in the *horyzontalBlinker* and vice versa
 
-```
+```javascript
 for (var i = -1; i < 1; i++) {
   for (var j = -1; j < 1; j++) {
     console.log(evolve(verticalBlinker)(i, j) ===  horyzontalBlinker(i, j)) // true
