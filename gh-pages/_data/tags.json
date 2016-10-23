@@ -1,0 +1,38 @@
+[
+  {
+    "name": "v0.4.0",
+    "zipball_url": "https://api.github.com/repos/fibo/games-of-life/zipball/v0.4.0",
+    "tarball_url": "https://api.github.com/repos/fibo/games-of-life/tarball/v0.4.0",
+    "commit": {
+      "sha": "520081dec3d1394f8bf2824a3291cb7ef1c6f943",
+      "url": "https://api.github.com/repos/fibo/games-of-life/commits/520081dec3d1394f8bf2824a3291cb7ef1c6f943"
+    }
+  },
+  {
+    "name": "v0.3.0",
+    "zipball_url": "https://api.github.com/repos/fibo/games-of-life/zipball/v0.3.0",
+    "tarball_url": "https://api.github.com/repos/fibo/games-of-life/tarball/v0.3.0",
+    "commit": {
+      "sha": "67eaf461d0939401f88e5f61dee2cfb0c88211ce",
+      "url": "https://api.github.com/repos/fibo/games-of-life/commits/67eaf461d0939401f88e5f61dee2cfb0c88211ce"
+    }
+  },
+  {
+    "name": "v0.2.1",
+    "zipball_url": "https://api.github.com/repos/fibo/games-of-life/zipball/v0.2.1",
+    "tarball_url": "https://api.github.com/repos/fibo/games-of-life/tarball/v0.2.1",
+    "commit": {
+      "sha": "6cf2b35bcd03f2327d7acaea502ff1ddb0518194",
+      "url": "https://api.github.com/repos/fibo/games-of-life/commits/6cf2b35bcd03f2327d7acaea502ff1ddb0518194"
+    }
+  },
+  {
+    "name": "v0.2.0",
+    "zipball_url": "https://api.github.com/repos/fibo/games-of-life/zipball/v0.2.0",
+    "tarball_url": "https://api.github.com/repos/fibo/games-of-life/tarball/v0.2.0",
+    "commit": {
+      "sha": "c1df4d9ae0ea020ec7e68bb91dc39df6cfeb189d",
+      "url": "https://api.github.com/repos/fibo/games-of-life/commits/c1df4d9ae0ea020ec7e68bb91dc39df6cfeb189d"
+    }
+  }
+]
