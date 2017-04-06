@@ -1,7 +1,7 @@
 {
   "name": "games-of-life",
   "description": "is a Mathematical solution to any Game of Life variation",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "main": "src/games-of-life.js",
   "scripts": {
     "build": "npm test && npm run browserify && npm run minify && npm run jekyll; git status",
