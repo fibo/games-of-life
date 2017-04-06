@@ -46,30 +46,44 @@ describe('countAliveNeighbours', function () {
   it('works', function () {
     var i, count
 
-    count = [0, 0, 0,
-             0, 0, 0,
-             0, 0, 0]
+    count = [
+      0, 0, 0,
+      0, 0, 0,
+      0, 0, 0
+    ]
+
     for (i in count) countAliveNeighboursOfEmptyGrid(i).should.be.eql(count[i])
 
-    count = [3, 5, 3,
-             5, 8, 5,
-             3, 5, 3]
+    count = [
+      3, 5, 3,
+      5, 8, 5,
+      3, 5, 3
+    ]
+
     for (i in count) countAliveNeighboursOfFullGrid(i).should.be.eql(count[i])
 
-    count = [2, 1, 2,
-             3, 2, 3,
-             2, 1, 2]
+    count = [
+      2, 1, 2,
+      3, 2, 3,
+      2, 1, 2
+    ]
+
     for (i in count) countAliveNeighboursOfSecondColumn(i).should.be.eql(count[i])
 
-    count = [2, 3, 2,
-             1, 2, 1,
-             2, 3, 2]
+    count = [
+      2, 3, 2,
+      1, 2, 1,
+      2, 3, 2
+    ]
+
     for (i in count) countAliveNeighboursOfSecondRow(i).should.be.eql(count[i])
 
-    count = [3, 3, 3,
-             3, 4, 3,
-             3, 3, 3]
+    count = [
+      3, 3, 3,
+      3, 4, 3,
+      3, 3, 3
+    ]
+
     for (i in count) countAliveNeighboursOfCross(i).should.be.eql(count[i])
   })
 })
-

@@ -59,19 +59,18 @@ describe('grid3x3AsMonoDimensionalArray', function () {
 
   describe('patternsAreEqual', function () {
     it('is a reflection', function () {
-      patternsAreEqual(pattern0, pattern0).should.be.true
-      patternsAreEqual(pattern1, pattern1).should.be.true
-      patternsAreEqual(horyzontalBlinker, horyzontalBlinker).should.be.true
+      patternsAreEqual(pattern0, pattern0).should.be.true()
+      patternsAreEqual(pattern1, pattern1).should.be.true()
+      patternsAreEqual(horyzontalBlinker, horyzontalBlinker).should.be.true()
     })
   })
 
   describe('evolve', function () {
     it('as expected', function () {
-      patternsAreEqual(evolve(pattern1), pattern0).should.be.true
-      patternsAreEqual(evolve(verticalBlinker), horyzontalBlinker).should.be.true
-      patternsAreEqual(evolve(horyzontalBlinker), verticalBlinker).should.be.true
-      patternsAreEqual(evolve(evolve(horyzontalBlinker)), horyzontalBlinker).should.be.true
+      patternsAreEqual(evolve(pattern1), pattern0).should.be.true()
+      patternsAreEqual(evolve(verticalBlinker), horyzontalBlinker).should.be.true()
+      patternsAreEqual(evolve(horyzontalBlinker), verticalBlinker).should.be.true()
+      patternsAreEqual(evolve(evolve(horyzontalBlinker)), horyzontalBlinker).should.be.true()
     })
   })
 })
-

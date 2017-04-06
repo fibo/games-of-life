@@ -1,4 +1,3 @@
-
 /**
  * @params {Function} getNeighboursOf
  * @params {Function} isAlive
@@ -11,4 +10,3 @@ function countAliveNeighbours (getNeighboursOf, isAlive, cell) {
 }
 
 module.exports = countAliveNeighbours
-

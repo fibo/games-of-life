@@ -61,9 +61,9 @@ describe('infiniteGridWithTwoDimensionalCoordinates', function () {
 
   describe('patternsAreEqual', function () {
     it('is a reflection', function () {
-      patternsAreEqual(horyzontalBlinker, horyzontalBlinker).should.be.true
-      patternsAreEqual(verticalBlinker, verticalBlinker).should.be.true
-      patternsAreEqual(emptyGrid, emptyGrid).should.be.true
+      patternsAreEqual(horyzontalBlinker, horyzontalBlinker).should.be.true()
+      patternsAreEqual(verticalBlinker, verticalBlinker).should.be.true()
+      patternsAreEqual(emptyGrid, emptyGrid).should.be.true()
     })
   })
 
@@ -107,12 +107,11 @@ describe('infiniteGridWithTwoDimensionalCoordinates', function () {
 
   describe('evolve', function () {
     it('as expected', function () {
-      patternsAreEqual(evolve(emptyGrid), emptyGrid).should.be.true
-      patternsAreEqual(evolve(singleCellAtTheOrigin), emptyGrid).should.be.true
-      patternsAreEqual(evolve(verticalBlinker), horyzontalBlinker).should.be.true
-      patternsAreEqual(evolve(horyzontalBlinker), verticalBlinker).should.be.true
-      patternsAreEqual(evolve(evolve(horyzontalBlinker)), horyzontalBlinker).should.be.true
+      patternsAreEqual(evolve(emptyGrid), emptyGrid).should.be.true()
+      patternsAreEqual(evolve(singleCellAtTheOrigin), emptyGrid).should.be.true()
+      patternsAreEqual(evolve(verticalBlinker), horyzontalBlinker).should.be.true()
+      patternsAreEqual(evolve(horyzontalBlinker), verticalBlinker).should.be.true()
+      patternsAreEqual(evolve(evolve(horyzontalBlinker)), horyzontalBlinker).should.be.true()
     })
   })
 })
-

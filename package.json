@@ -53,8 +53,8 @@
     "pre-commit": "^1.2.2",
     "should": "^11.2.1",
     "standard": "^10.0.0",
-    "svgx": "^0.6.1",
+    "svgx": "^0.7.3",
     "uglify-js": "^2.8.21",
-    "zeroconf-redux": "^0.8.1"
+    "zeroconf-redux": "^0.12.3"
   }
 }
