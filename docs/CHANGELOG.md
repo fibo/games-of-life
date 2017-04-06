@@ -17,6 +17,11 @@ Changelog format adheres to [Keep a Changelog](http://keepachangelog.com/)</sub>
 
 - Classic demo (in vanilla JS) **To be completed**
 
+## [0.5.2] - 2017-04-06
+
+- Updated deps
+- Using docs/ folder instead of gh-pages branch.
+
 ## [0.5.1] - 2016-10-23
 
 ### Added
