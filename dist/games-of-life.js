@@ -49,7 +49,6 @@ function classicTransitionRule (a, b, c, getNeighboursOf, isAlive) {
 module.exports = classicTransitionRule
 
 },{"./countAliveNeighbours":2}],2:[function(require,module,exports){
-
 /**
  * @params {Function} getNeighboursOf
  * @params {Function} isAlive
@@ -62,7 +61,6 @@ function countAliveNeighbours (getNeighboursOf, isAlive, cell) {
 }
 
 module.exports = countAliveNeighbours
-
 
 },{}],3:[function(require,module,exports){
 var classicTransitionRule = require('./classicTransitionRule')
@@ -260,7 +258,6 @@ exports.hexagonal = require('./hexagonal')
 
 
 },{"./hexagonal":8}],"games-of-life":[function(require,module,exports){
-
 exports.classicTransitionRule = require('./classicTransitionRule')
 
 exports.countAliveNeighbours = require('./countAliveNeighbours')
@@ -270,6 +267,5 @@ exports.createWorld = require('./createWorld')
 exports.pattern = require('./pattern')
 
 exports.space = require('./space')
-
 
 },{"./classicTransitionRule":1,"./countAliveNeighbours":2,"./createWorld":3,"./pattern":5,"./space":9}]},{},[]);
