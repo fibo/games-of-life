@@ -299,10 +299,10 @@ exports.default = World;
 
 
 World.defaultProps = {
-  height: 300,
+  height: 710,
   isRunning: false,
-  quantumTime: 1000,
-  width: 400
+  quantumTime: 710,
+  width: 710
 };
 
 },{"../store/initialState":5,"./Hexagon":1,"games-of-life":364,"react":360}],4:[function(require,module,exports){

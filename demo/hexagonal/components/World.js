@@ -135,8 +135,8 @@ export default class World extends React.Component {
 }
 
 World.defaultProps = {
-  height: 300,
+  height: 710,
   isRunning: false,
-  quantumTime: 1000,
-  width: 400
+  quantumTime: 710,
+  width: 710
 }
