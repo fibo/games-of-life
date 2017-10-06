@@ -18,7 +18,7 @@
     "lint:src": "standard src/*",
     "lint:test": "cd test; standard --global describe --global it; cd -",
     "minify": "cd dist; uglifyjs ${npm_package_name}.js --source-map --output ${npm_package_name}.min.js --compress --mangle -b beautify=false,preamble='\"// http://g14n.info/games-of-life\"'; cd -",
-    "postversion": "git push origin v${npm_package_version}; npm publish; npm run push",
+    "postversion": "git push origin v${npm_package_version}; npm publish; git push origin master",
     "start": "NODE_PATH=src budo demo/hexagonal/index.js --live --open -- -t babelify",
     "test": "mocha --bail --require should --reporter min --recursive"
   },
