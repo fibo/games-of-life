@@ -10,7 +10,7 @@
     "browserify_demo": "NODE_ENV=production NODE_PATH=src browserify demo/hexagonal/index.js -t babelify -o docs/js/demo-hexagonal.js",
     "check-deps": "npm outdated",
     "docs": "for x in generateSVG homepage; do npm run docs:$x; done",
-    "docs:generateSVG": "NODE_PATH=src demo/hexagonal/generateSVG.js > docs/svg/HexagonalGameOfLife.svg",
+    "docs:generateSVG": "NODE_PATH=src demo/hexagonal/generateSVG.js > docs/svg/HexagonalGoL.svg",
     "docs:homepage": "echo \"---\ntitle: $npm_package_name\n---\" > docs/index.md; cat README.md >> docs/index.md",
     "jekyll": "npm run docs; npm run docs:generateSVG; cd docs; jekyll serve; cd ..",
     "lint": "for x in demo src test; do npm run lint:$x; done",
