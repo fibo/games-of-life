@@ -17,7 +17,20 @@ Changelog format adheres to [Keep a Changelog](http://keepachangelog.com/)</sub>
 
 - Classic demo (in vanilla JS) **To be completed**
 
+## [0.5.3] - 2017-10-06
+
+### Added
+
+- Updated deps.
+- Updated website layout.
+
+### Fixed
+
+- Generate hexagonal demo SVG: demo/hexagonal/generateSVG.js
+
 ## [0.5.2] - 2017-04-06
+
+### Added
 
 - Updated deps
 - Using docs/ folder instead of gh-pages branch.

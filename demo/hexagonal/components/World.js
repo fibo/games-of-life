@@ -1,9 +1,9 @@
-import React, { PropTypes, Component } from 'react'
+import React from 'react'
 import Hexagon from './Hexagon'
 import { alive, coordinate } from '../store/initialState'
 import gamesOfLife from 'games-of-life'
 
-class World extends Component {
+export default class World extends React.Component {
   constructor () {
     super()
 
@@ -134,17 +134,9 @@ class World extends Component {
   }
 }
 
-World.propTypes = {
-  isRunning: PropTypes.bool.isRequired,
-  width: PropTypes.number.isRequired,
-  height: PropTypes.number.isRequired
-}
-
 World.defaultProps = {
   height: 300,
   isRunning: false,
   quantumTime: 1000,
   width: 400
 }
-
-export default World

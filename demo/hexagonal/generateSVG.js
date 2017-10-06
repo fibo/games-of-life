@@ -1,6 +1,12 @@
 #!/usr/bin/env babel-node
 import React from 'react'
-import World from './components/World'
-import render from 'svgx'
+import reactDom from 'react-dom/server'
+import svgx from 'svgx'
 
-console.log(render(<World />, { doctype: true, xmlns: true }))
+import World from './components/World'
+
+const render = svgx(reactDom.renderToStaticMarkup)
+
+const svgOutput = render(<World />)
+
+console.log(svgOutput)
