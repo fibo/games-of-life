@@ -1,16 +1,7 @@
-
-domain: g14n.info
+markdown: kramdown
 
 gems:
   - jekyll-sitemap
-
-permalink: ./:year/:month/:title/
-
-markdown: kramdown
-
-highlighter: rouge
-
-# Defaults
 
 defaults:
   -
@@ -18,10 +9,4 @@ defaults:
       path: ""
       type: "pages"
     values:
-      layout: page
-
-# Custom vars
-
-google-analytics:
-  id: UA-12635045-12
-
+      layout: common/page
