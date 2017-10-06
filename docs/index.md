@@ -45,8 +45,8 @@ bower install games-of-life
 
 or use a CDN adding this to your HTML page
 
-```
-<script src="https://cdn.rawgit.com/fibo/games-of-life/master/dist/games-of-life.min.js"></script>
+```html
+<script src="https://unpkg.com/games-of-life/dist/games-of-life.min.js"></script>
 ```
 
 ## Idea

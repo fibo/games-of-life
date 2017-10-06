@@ -23,10 +23,16 @@ Changelog format adheres to [Keep a Changelog](http://keepachangelog.com/)</sub>
 
 - Updated deps.
 - Updated website layout.
+- CDN link: unpkg.
 
 ### Fixed
 
 - Generate hexagonal demo SVG: demo/hexagonal/generateSVG.js
+- Demo path to script.
+
+### Removed
+
+- bower
 
 ## [0.5.2] - 2017-04-06
 

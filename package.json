@@ -47,9 +47,9 @@
   "homepage": "http://g14n.info/games-of-life",
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "mocha": "^3.2.0",
+    "mocha": "^4.0.1",
     "pre-commit": "^1.2.2",
-    "should": "^11.2.1",
+    "should": "^13.1.0",
     "standard": "^10.0.3",
     "svgx": "^1.0.0",
     "uglify-js": "^3.1.3",
