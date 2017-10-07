@@ -28696,6 +28696,7 @@ if ("production" === 'production') {
 var countAliveNeighbours = require('./countAliveNeighbours');
 
 /**
+ * Implements the followinf rules.
  *
  * 1. Any live cell with fewer than `a` live neighbours dies, as if caused by under-population.
  * 2. Any live cell with `a` or `b` live neighbours lives on to the next generation.
@@ -28710,11 +28711,11 @@ var countAliveNeighbours = require('./countAliveNeighbours');
  * c = 3
  * ```
  *
- * @params {Number} a under population threshold
- * @params {Number} b over crowding threshold
- * @params {Number} c reproduction value
- * @params {Function} getNeighboursOf
- * @params {Function} isAlive
+ * @param {Number} a under population threshold
+ * @param {Number} b over crowding threshold
+ * @param {Number} c reproduction value
+ * @param {Function} getNeighboursOf
+ * @param {Function} isAlive
  *
  * @returns {Function} nextStatusOf (cell)
  */
@@ -28746,9 +28747,11 @@ module.exports = classicTransitionRule;
 "use strict";
 
 /**
- * @params {Function} getNeighboursOf
- * @params {Function} isAlive
- * @params {*} cell
+ * Counts alive cells nearby.
+ *
+ * @param {Function} getNeighboursOf
+ * @param {Function} isAlive
+ * @param {*} cell
  * @returns {Number} count
  */
 
@@ -28766,13 +28769,13 @@ var classicTransitionRule = require('./classicTransitionRule');
 /**
  * Create a GoL world.
  *
- * @params {Function} getNeighboursOf
+ * @param {Function} getNeighboursOf
  * @returns {Function} world
  */
 
 function createWorld(getNeighboursOf) {
   /**
-   * @params {Function} [transitionRule] defaults to classis GoL transition rule
+   * @param {Function} [transitionRule] defaults to classis GoL transition rule
    * @returns {Function} evolve
    */
 
@@ -28782,7 +28785,7 @@ function createWorld(getNeighboursOf) {
     }
 
     /**
-     * @params {Function} isAliveNow
+     * @param {Function} isAliveNow
      * @returns {Function} isAliveNext
      */
 
@@ -28790,7 +28793,7 @@ function createWorld(getNeighboursOf) {
       var nextStatusOf = transitionRule(getNeighboursOf, isAliveNow);
 
       /**
-       * @params {*} cell
+       * @param {*} cell
        * @returns {Boolean} status of the cell
        */
 
@@ -28826,6 +28829,8 @@ exports.space = require('./space');
 "use strict";
 
 /**
+ * Emptyness.
+ *
  * @returns {Boolean} false
  */
 
@@ -28850,21 +28855,18 @@ exports.singleCellAtOrigin = require('./singleCellAtOrigin');
 var singleCellAtOrigin = require('./singleCellAtOrigin');
 
 /**
- * @params {Array} cell
+ * @param {Array} coordinates of cell
  * @returns {Function} isAlive
  */
 
 function singleCell(coordinates) {
-
-  function isAlive(cell) {
+  return function isAlive(cell) {
     var translatedCell = [];
 
     for (var i in cell) {
       translatedCell.push(cell[i] - coordinates[i]);
     }return singleCellAtOrigin(translatedCell);
-  }
-
-  return isAlive;
+  };
 }
 
 module.exports = singleCell;
@@ -28873,7 +28875,9 @@ module.exports = singleCell;
 "use strict";
 
 /**
- * @params {Array} cell
+ * A cell with all zero coordinates.
+ *
+ * @param {Array} cell
  * @returns {Boolean} status
  */
 
@@ -28946,13 +28950,13 @@ module.exports = singleCellAtOrigin;
  *          0,-1
  * ```
  *
- * @params {Array} cell
+ * @param {Array} cell
  * @returns {Array} neighbours
  */
 
 function hexagonal(cell) {
-  var x = cell[0],
-      y = cell[1];
+  var x = cell[0];
+  var y = cell[1];
 
   var neighbours = [[x - 1, y + 1], [x, y + 1], [x + 1, y], [x - 1, y], [x, y - 1], [x + 1, y - 1]];
 

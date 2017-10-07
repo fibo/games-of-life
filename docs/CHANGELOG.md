@@ -17,6 +17,13 @@ Changelog format adheres to [Keep a Changelog](http://keepachangelog.com/)</sub>
 
 - Classic demo (in vanilla JS) **To be completed**
 
+## [0.5.4] - 2017-10-07
+
+### Fixed
+
+- Few docs improvement
+- Happy linter
+
 ## [0.5.3] - 2017-10-06
 
 ### Added

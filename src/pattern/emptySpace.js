@@ -1,5 +1,6 @@
-
 /**
+ * Emptyness.
+ *
  * @returns {Boolean} false
  */
 
@@ -8,4 +9,3 @@ function emptySpace () {
 }
 
 module.exports = emptySpace
-

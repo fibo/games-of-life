@@ -1,24 +1,18 @@
-
 var singleCellAtOrigin = require('./singleCellAtOrigin')
 
 /**
- * @params {Array} cell
+ * @param {Array} coordinates of cell
  * @returns {Function} isAlive
  */
 
 function singleCell (coordinates) {
-
-  function isAlive (cell) {
+  return function isAlive (cell) {
     var translatedCell = []
 
-    for (var i in cell)
-      translatedCell.push(cell[i] - coordinates[i])
+    for (var i in cell) translatedCell.push(cell[i] - coordinates[i])
 
     return singleCellAtOrigin(translatedCell)
   }
-
-  return isAlive
 }
 
 module.exports = singleCell
-

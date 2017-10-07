@@ -1,3 +1,1 @@
-
 exports.hexagonal = require('./hexagonal')
-

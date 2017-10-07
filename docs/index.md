@@ -37,13 +37,7 @@ With [npm](https://npmjs.org/) do
 npm install games-of-life
 ```
 
-With [bower](http://bower.io/) do
-
-```bash
-bower install games-of-life
-```
-
-or use a CDN adding this to your HTML page
+You could also use a CDN adding this to your HTML page
 
 ```html
 <script src="https://unpkg.com/games-of-life/dist/games-of-life.min.js"></script>
@@ -71,8 +65,8 @@ In other words,
 
 > if you define a *getNeighbours* function you also shape the space of a *Game of Life* universe
 
-On the other hand, let be given the definition of an *isAlive* function, which returns true if the given cell is alive, false otherwise.
-It can be easily extended to an *areAlive* function which returns a list of booleans, given a list of cells and, following a similar identification we used for the *getNeighboursOf* function, an *isAlive* function describes the state of a *Game of Life* universe at a given moment.
+On the other hand, let be given the definition of an *isAlive* function, which returns `true` if the given cell is alive, `false` otherwise.
+It can be easily extended to an *areAlive* function which, given a list of cells, returns a list of booleans; following a similar identification we used for the *getNeighboursOf* function, an *isAlive* function describes the state of a *Game of Life* universe at a given moment.
 
 The considerations above allow to implement an **abstract** *Game of Life* in a functional way, in any of its variations, for example:
 
@@ -203,11 +197,6 @@ External links:
 * [LifeWiki][2]
 * [Hacker News thread][3]
 
-Other examples:
-
-* [grid 3x3 as mono dimensional array](https://github.com/fibo/games-of-life/blob/master/test/example/grid3x3AsMonoDimensionalArray.js)
-* [hexagonal tiles with two dimensional coordinates](https://github.com/fibo/games-of-life/blob/master/test/example/hexagonalTilesWithTwoDimensionalCoordinates.js)
-
 ## License
 
 [MIT](http://g14n.info/mit-license)
@@ -215,4 +204,3 @@ Other examples:
 [1]: http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life "Game of Life"
 [2]: http://www.conwaylife.com/wiki/Main_Page "LikeWiki"
 [3]: https://news.ycombinator.com/item?id=9632255 "Hacker News thread"
-

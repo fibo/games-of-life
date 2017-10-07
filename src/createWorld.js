@@ -3,13 +3,13 @@ var classicTransitionRule = require('./classicTransitionRule')
 /**
  * Create a GoL world.
  *
- * @params {Function} getNeighboursOf
+ * @param {Function} getNeighboursOf
  * @returns {Function} world
  */
 
 function createWorld (getNeighboursOf) {
   /**
-   * @params {Function} [transitionRule] defaults to classis GoL transition rule
+   * @param {Function} [transitionRule] defaults to classis GoL transition rule
    * @returns {Function} evolve
    */
 
@@ -19,7 +19,7 @@ function createWorld (getNeighboursOf) {
     }
 
     /**
-     * @params {Function} isAliveNow
+     * @param {Function} isAliveNow
      * @returns {Function} isAliveNext
      */
 
@@ -27,7 +27,7 @@ function createWorld (getNeighboursOf) {
       var nextStatusOf = transitionRule(getNeighboursOf, isAliveNow)
 
       /**
-       * @params {*} cell
+       * @param {*} cell
        * @returns {Boolean} status of the cell
        */
 

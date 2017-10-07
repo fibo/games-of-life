@@ -1,6 +1,7 @@
-
 /**
- * @params {Array} cell
+ * A cell with all zero coordinates.
+ *
+ * @param {Array} cell
  * @returns {Boolean} status
  */
 
@@ -13,4 +14,3 @@ function singleCellAtOrigin (cell) {
 }
 
 module.exports = singleCellAtOrigin
-

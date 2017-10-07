@@ -1,4 +1,3 @@
-
 /**
  * Defines an hexagonal tiling with well defined 2d coordinates
  *
@@ -55,19 +54,20 @@
  *          0,-1
  * ```
  *
- * @params {Array} cell
+ * @param {Array} cell
  * @returns {Array} neighbours
  */
 
 function hexagonal (cell) {
-  var x = cell[0],
-      y = cell[1]
+  var x = cell[0]
+  var y = cell[1]
 
-  var neighbours = [[x-1, y+1], [x, y+1], [x+1, y],
-                    [x-1, y], [x, y-1], [x+1, y-1]]
+  var neighbours = [
+    [x - 1, y + 1], [x, y + 1], [x + 1, y],
+    [x - 1, y], [x, y - 1], [x + 1, y - 1]
+  ]
 
   return neighbours
 }
 
 module.exports = hexagonal
-

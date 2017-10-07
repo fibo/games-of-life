@@ -1,7 +1,9 @@
 /**
- * @params {Function} getNeighboursOf
- * @params {Function} isAlive
- * @params {*} cell
+ * Counts alive cells nearby.
+ *
+ * @param {Function} getNeighboursOf
+ * @param {Function} isAlive
+ * @param {*} cell
  * @returns {Number} count
  */
 
