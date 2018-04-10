@@ -42,7 +42,7 @@ You could also use a CDN adding this to your HTML page
 
 ## Idea
 
-On the 30th of May 2015, I have participated in a [Coderetreat at Milan XPUG](http://coderetreat.org/events/xpug-milan-coderetreat).
+On the 30th of May 2015, I have participated in a [Coderetreat](http://coderetreat.org/) at Milan XPUG.
 
 We have had so much fun coding implementations of the [Game of Life][1].
 
