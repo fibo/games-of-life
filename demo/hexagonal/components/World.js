@@ -107,7 +107,7 @@ export default class World extends React.Component {
 
     return (
       <svg
-        style={{cursor}}
+        style={{ cursor }}
         height={height}
         width={width}
       >
