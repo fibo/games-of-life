@@ -8,7 +8,6 @@
     "browserify": "for x in demo dist; do npm run browserify_$x; done",
     "browserify_dist": "browserify -r ./src/${npm_package_name}.js:${npm_package_name} -o dist/${npm_package_name}.js",
     "browserify_demo": "NODE_ENV=production NODE_PATH=src browserify demo/hexagonal/index.js -t babelify -o docs/js/demo-hexagonal.js",
-    "check-deps": "npm outdated",
     "docs": "for x in _data generateSVG homepage; do npm run docs:$x; done",
     "docs:_data": "for x in package.json tags.json; do npm run docs:_data:$x; done",
     "docs:_data:package.json": "cp package.json docs/_data",
@@ -26,7 +25,6 @@
     "test": "mocha --bail --require should --reporter min --recursive"
   },
   "pre-commit": [
-    "check-deps",
     "lint",
     "test"
   ],

@@ -12,7 +12,7 @@
 [![NPM version](https://badge.fury.io/js/games-of-life.svg)](http://badge.fury.io/js/games-of-life)
 [![Badge size](https://badge-size.herokuapp.com/fibo/games-of-life/master/dist/games-of-life.min.js)](https://github.com/fibo/games-of-life/blob/master/dist/games-of-life.min.js)
 [![Build Status](https://travis-ci.org/fibo/games-of-life.svg?branch=master)](https://travis-ci.org/fibo/games-of-life?branch=master)
-[![Dependency Status](https://gemnasium.com/fibo/games-of-life.svg)](https://gemnasium.com/fibo/games-of-life)
+[![No deps](https://img.shields.io/badge/dependencies-none-green.svg)](https://github.com/fibo/games-of-life)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 [![Change log](https://img.shields.io/badge/change-log-blue.svg)](http://g14n.info/games-of-life/changelog)
 
