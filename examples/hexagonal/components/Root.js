@@ -1,7 +1,7 @@
 const Component = require('./Component')
 
 const Footer = require('./Footer')
-const Main = require('./Main')
+const World = require('./World')
 
 class Root extends Component {
   constructor (dispatch, element) {
@@ -9,7 +9,7 @@ class Root extends Component {
 
     this.component.footer = new Footer(dispatch, document.querySelector('footer'))
 
-    this.component.main = new Main(dispatch, document.querySelector('main'))
+    this.component.world = new World(dispatch, document.querySelector('svg.World'))
   }
 }
 

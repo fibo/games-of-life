@@ -6,6 +6,14 @@ class Component {
     this.component = {}
   }
 
+  createElement (qualifiedName) {
+    const element = document.createElement(qualifiedName)
+
+    this.element.appendChild(element)
+
+    return element
+  }
+
   createElementNS (qualifiedName) {
     const namespaceURI = 'http://www.w3.org/2000/svg'
 

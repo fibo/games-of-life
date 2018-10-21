@@ -1,5 +1,6 @@
 const initialState = {
-  play: false
+  play: false,
+  unit: 17
 }
 
 module.exports = initialState
