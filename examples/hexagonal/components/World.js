@@ -47,7 +47,7 @@ class World extends Component {
         this.dispatch({ type: 'ADD_ROW' })
       }, 50)
     } else if (currentWidth < element.clientWidth) {
-       setTimeout(() => {
+      setTimeout(() => {
         this.dispatch({ type: 'ADD_COLUMN' })
       }, 50)
     }
