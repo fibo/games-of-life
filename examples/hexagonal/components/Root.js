@@ -10,6 +10,10 @@ class Root extends Component {
     this.component.footer = new Footer(dispatch, document.querySelector('footer'))
 
     this.component.world = new World(dispatch, document.querySelector('svg.World'))
+
+    window.addEventListener('resize', () => {
+      dispatch({ type: 'RESIZE' })
+    })
   }
 }
 

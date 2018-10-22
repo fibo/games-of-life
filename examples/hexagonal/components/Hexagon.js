@@ -1,8 +1,12 @@
 const Component = require('./Component')
 
 class Hexagon extends Component {
-  constructor (dispatch, element) {
+  constructor (dispatch, element, coordinates) {
     super(dispatch, element)
+
+    this.coordinates = coordinates
+
+    this.element.setAttribute('class', 'Hexagon')
 
     this.element.onclick = this.onclick.bind(this)
   }
@@ -10,6 +14,17 @@ class Hexagon extends Component {
   onclick () {}
 
   render (state) {
+    const {
+      coordinates,
+      element
+    } = this
+
+    const [i, j] = coordinates
+
+    const myState = state.cells[i][j]
+
+    const { alive } = myState
+
     if (state.unit !== this.unit) {
       const unit = this.unit = state.unit
 
@@ -27,6 +42,22 @@ class Hexagon extends Component {
       const points = `${A.x} ${A.y} ${B.x} ${B.y} ${C.x} ${C.y} ${D.x} ${D.y} ${E.x} ${E.y} ${F.x} ${F.y}`
 
       this.element.setAttributeNS(null, 'points', points)
+
+      const c = 0.5
+      const transform = `translate(${70 * c * j + 35 * c * i},${i * c * 61 + 10})`
+
+      this.element.setAttributeNS(null, 'transform', transform)
+    }
+
+    if (alive !== this.alive) {
+      console.log(alive)
+      if (alive) {
+        element.classList.add('alive')
+      } else {
+        element.classList.remove('alive')
+      }
+
+      this.alive = alive
     }
   }
 }

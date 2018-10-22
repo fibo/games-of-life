@@ -15,7 +15,7 @@
     "lint": "standa",
     "minify": "cd dist; uglifyjs ${npm_package_name}.js --source-map --output ${npm_package_name}.min.js --compress --mangle -b beautify=false,preamble='\"// http://g14n.info/games-of-life\"'; cd -",
     "postversion": "git push origin v${npm_package_version}; npm publish; git push origin master",
-    "example_hexagonal": "NODE_PATH=src budo examples/hexagonal/index.js --dir docs/examples/hexagonal/ --serve bundle.js --open",
+    "example_hexagonal": "NODE_PATH=src budo examples/hexagonal/index.js --dir docs/examples/hexagonal/ --serve bundle.js --open --live",
     "test": "mocha --bail --require should --reporter min --recursive"
   },
   "pre-commit": [
@@ -26,7 +26,10 @@
     "globals": [
       "describe",
       "it"
-    ]
+    ],
+    "ignore": {
+      "dist/"
+    }
   },
   "repository": {
     "type": "git",

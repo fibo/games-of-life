@@ -19,9 +19,9 @@ class PlayButton extends SvgIcon {
   render (state) {
     if (this.play !== state.play) {
       if (state.play) {
-        this.path.setAttributeNS(null, 'd', playShape)
-      } else {
         this.path.setAttributeNS(null, 'd', stopShape)
+      } else {
+        this.path.setAttributeNS(null, 'd', playShape)
       }
 
       this.play = state.play
