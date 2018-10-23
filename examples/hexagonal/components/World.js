@@ -45,11 +45,11 @@ class World extends Component {
     if (currentHeight < element.clientHeight) {
       setTimeout(() => {
         this.dispatch({ type: 'ADD_ROW' })
-      }, 50)
+      }, 10)
     } else if (currentWidth < element.clientWidth) {
       setTimeout(() => {
         this.dispatch({ type: 'ADD_COLUMN' })
-      }, 50)
+      }, 17)
     }
   }
 }

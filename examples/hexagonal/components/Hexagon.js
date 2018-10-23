@@ -43,14 +43,12 @@ class Hexagon extends Component {
 
       this.element.setAttributeNS(null, 'points', points)
 
-      const c = 0.5
-      const transform = `translate(${70 * c * j + 35 * c * i},${i * c * 61 + 10})`
+      const transform = `translate(${j * unit * 1.7},${i * unit * 1.9 + j * unit * sin60})`
 
       this.element.setAttributeNS(null, 'transform', transform)
     }
 
     if (alive !== this.alive) {
-      console.log(alive)
       if (alive) {
         element.classList.add('alive')
       } else {
