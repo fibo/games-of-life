@@ -43,7 +43,7 @@ class Hexagon extends Component {
 
       this.element.setAttributeNS(null, 'points', points)
 
-      const transform = `translate(${j * unit * 1.7},${i * unit * 1.9 + j * unit * sin60})`
+      const transform = `translate(${j * unit * 1.65},${i * unit * 1.8 + j * unit * sin60})`
 
       this.element.setAttributeNS(null, 'transform', transform)
     }

@@ -2,6 +2,9 @@ const Component = require('./Component')
 
 const Hexagon = require('./Hexagon')
 
+const screenHeight = window.screen.height
+const screenWidth = window.screen.width
+
 class World extends Component {
   constructor (dispatch, element) {
     super(dispatch, element)
@@ -17,7 +20,7 @@ class World extends Component {
 
   render (state) {
     const {
-      element
+      dispatch
     } = this
 
     const numRows = state.cells.length
@@ -42,15 +45,44 @@ class World extends Component {
 
     // Fill space with cells, use setTimeout just to animate.
 
-    if (currentHeight < element.clientHeight) {
+    if (currentHeight < screenHeight) {
       setTimeout(() => {
-        this.dispatch({ type: 'ADD_ROW' })
+        dispatch({ type: 'ADD_ROW' })
       }, 10)
-    } else if (currentWidth < element.clientWidth) {
+
+      return
+    } else if (currentWidth < screenWidth) {
       setTimeout(() => {
-        this.dispatch({ type: 'ADD_COLUMN' })
+        dispatch({ type: 'ADD_COLUMN' })
       }, 17)
+
+      return
     }
+
+    // Note that *quantumTime* must be checked before *play*.
+    if (state.quantumTime !== this.quantumTime) {
+      this.quantumTime = state.quantumTime
+    }
+
+    if (state.play !== this.play) {
+      if (state.play) {
+        this.startGame()
+      } else {
+        this.stopGame()
+      }
+
+      this.play = state.play
+    }
+  }
+
+  startGame () {
+    this.loop = setInterval(() => {
+      this.dispatch({ type: 'EVOLVE' })
+    }, this.quantumTime)
+  }
+
+  stopGame () {
+    clearInterval(this.loop)
   }
 }
 

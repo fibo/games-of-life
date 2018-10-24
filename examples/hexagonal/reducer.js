@@ -1,3 +1,7 @@
+const gamesOfLife = require('games-of-life')
+
+const evolveRule = gamesOfLife.createWorld(gamesOfLife.space.hexagonal)(/* use default transition rule */)
+
 function reducer (currenState, action) {
   const state = Object.assign({}, currenState)
 
@@ -17,6 +21,31 @@ function reducer (currenState, action) {
           alive: Math.random() < 0.5 // Flip a coin.
         }
       ])
+
+      return state
+
+    case 'EVOLVE':
+      const isAliveNow = (coord) => {
+        const [i, j] = coord
+
+        if (typeof currenState.cells[i] === 'undefined') {
+          return false
+        } else {
+          if (typeof currenState.cells[i][j] === 'undefined') {
+            return false
+          } else {
+            return currenState.cells[i][j].alive
+          }
+        }
+      }
+
+      const isAliveNext = evolveRule(isAliveNow)
+
+      state.cells.forEach((row, i) => {
+        row.forEach((cell, j) => {
+          state.cells[i][j].alive = isAliveNext([i, j])
+        })
+      })
 
       return state
 
