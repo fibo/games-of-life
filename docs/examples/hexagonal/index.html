@@ -22,7 +22,7 @@
       }
 
       html, body {
-        height: 100%;
+        min-height: 100%;
         width: 100%;
       }
 
@@ -34,20 +34,31 @@
       svg.World {
         background-color: #333333;
         width: 100%;
-        height: 95vh;
+        height: 100%;
       }
 
       footer {
-        background-color: snow;
-        height: 5vh;
+        height: 10vh;
+        margin-top: -10vh;
         display: flex;
         align-items: center;
         justify-content: center;
       }
 
       svg.Icon {
-        fill: #333333;
-        height: 4vh;
+        height: 8vh;
+        fill: rgba(17, 17, 17, 0.45);
+        transition: fill .5s;
+      }
+
+      svg.Icon:hover {
+        fill: rgba(17, 17, 17, 0.71);
+        transition: fill .5s;
+      }
+
+      svg.Icon:focus {
+        fill: rgba(17, 17, 17, 0.71);
+        transition: fill .5s;
       }
 
       .Hexagon {
@@ -55,11 +66,13 @@
       }
 
       .Hexagon:hover {
-        fill: black;
+        transition: opacity 0.4s;
+        opacity: 0.7;
       }
 
       .Hexagon.alive {
         fill: goldenrod;
+        transition: fill 0.1s;
       }
     </style>
   </head>

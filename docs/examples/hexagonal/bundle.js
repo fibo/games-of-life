@@ -97,7 +97,17 @@ class Hexagon extends Component {
     this.element.onclick = this.onclick.bind(this)
   }
 
-  onclick () {}
+  onclick () {
+    const {
+      coordinates,
+      dispatch
+    } = this
+
+    dispatch({
+      type: 'TOGGLE_CELL',
+      coordinates
+    })
+  }
 
   render (state) {
     const {
@@ -129,7 +139,7 @@ class Hexagon extends Component {
 
       this.element.setAttributeNS(null, 'points', points)
 
-      const transform = `translate(${j * unit * 1.65},${i * unit * 1.8 + j * unit * sin60})`
+      const transform = `translate(${j * unit * 1.6},${i * unit * 1.8 + j * unit * sin60 - window.screen.height})`
 
       this.element.setAttributeNS(null, 'transform', transform)
     }
@@ -225,8 +235,8 @@ const Component = require('./Component')
 
 const Hexagon = require('./Hexagon')
 
-const screenHeight = screen.height
-const screenWidth = screen.width
+const screenHeight = window.screen.height
+const screenWidth = window.screen.width
 
 class World extends Component {
   constructor (dispatch, element) {
@@ -243,8 +253,7 @@ class World extends Component {
 
   render (state) {
     const {
-      dispatch,
-      element
+      dispatch
     } = this
 
     const numRows = state.cells.length
@@ -269,7 +278,7 @@ class World extends Component {
 
     // Fill space with cells, use setTimeout just to animate.
 
-    if (currentHeight < screenHeight) {
+    if (currentHeight < screenHeight * 2) {
       setTimeout(() => {
         dispatch({ type: 'ADD_ROW' })
       }, 10)
@@ -323,7 +332,7 @@ window.addEventListener('load', app(initialState))
 const initialState = {
   cells: [],
   play: false,
-  quantumTime: 170,
+  quantumTime: 400,
   unit: 17
 }
 
@@ -332,7 +341,11 @@ module.exports = initialState
 },{}],11:[function(require,module,exports){
 const gamesOfLife = require('games-of-life')
 
-const evolveRule = gamesOfLife.createWorld(gamesOfLife.space.hexagonal)(/* use default transition rule */)
+const evolveRule = gamesOfLife.createWorld(
+  gamesOfLife.space.hexagonal
+)(
+  gamesOfLife.classicTransitionRule.bind(null, 1, 2, 3)
+)
 
 function reducer (currenState, action) {
   const state = Object.assign({}, currenState)
@@ -341,7 +354,7 @@ function reducer (currenState, action) {
     case 'ADD_COLUMN': // Add a column, i.e. a cell to every row.
       for (let i in state.cells) {
         state.cells[i].push({
-          alive: Math.random() > 0.5 // Flip a coin.
+          alive: Math.random() > 0.71
         })
       }
 
@@ -350,7 +363,7 @@ function reducer (currenState, action) {
     case 'ADD_ROW': // Add a row with one cell.
       state.cells.push([
         {
-          alive: Math.random() < 0.5 // Flip a coin.
+          alive: Math.random() < 0.17
         }
       ])
 
@@ -379,6 +392,8 @@ function reducer (currenState, action) {
         })
       })
 
+      return state
+
     case 'PLAY':
       state.play = true
 
@@ -392,6 +407,13 @@ function reducer (currenState, action) {
 
     case 'STOP':
       state.play = false
+
+      return state
+
+    case 'TOGGLE_CELL':
+      const [i, j] = action.coordinates
+
+      state.cells[i][j].alive = !state.cells[i][j].alive
 
       return state
 

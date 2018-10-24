@@ -1,6 +1,10 @@
 const gamesOfLife = require('games-of-life')
 
-const evolveRule = gamesOfLife.createWorld(gamesOfLife.space.hexagonal)(/* use default transition rule */)
+const evolveRule = gamesOfLife.createWorld(
+  gamesOfLife.space.hexagonal
+)(
+  gamesOfLife.classicTransitionRule.bind(null, 1, 2, 3)
+)
 
 function reducer (currenState, action) {
   const state = Object.assign({}, currenState)
@@ -9,7 +13,7 @@ function reducer (currenState, action) {
     case 'ADD_COLUMN': // Add a column, i.e. a cell to every row.
       for (let i in state.cells) {
         state.cells[i].push({
-          alive: Math.random() > 0.5 // Flip a coin.
+          alive: Math.random() > 0.71
         })
       }
 
@@ -18,7 +22,7 @@ function reducer (currenState, action) {
     case 'ADD_ROW': // Add a row with one cell.
       state.cells.push([
         {
-          alive: Math.random() < 0.5 // Flip a coin.
+          alive: Math.random() < 0.17
         }
       ])
 
@@ -62,6 +66,13 @@ function reducer (currenState, action) {
 
     case 'STOP':
       state.play = false
+
+      return state
+
+    case 'TOGGLE_CELL':
+      const [i, j] = action.coordinates
+
+      state.cells[i][j].alive = !state.cells[i][j].alive
 
       return state
 

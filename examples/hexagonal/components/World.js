@@ -45,7 +45,7 @@ class World extends Component {
 
     // Fill space with cells, use setTimeout just to animate.
 
-    if (currentHeight < screenHeight) {
+    if (currentHeight < screenHeight * 2) {
       setTimeout(() => {
         dispatch({ type: 'ADD_ROW' })
       }, 10)

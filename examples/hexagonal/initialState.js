@@ -1,7 +1,7 @@
 const initialState = {
   cells: [],
   play: false,
-  quantumTime: 170,
+  quantumTime: 400,
   unit: 17
 }
 

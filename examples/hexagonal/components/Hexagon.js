@@ -11,7 +11,17 @@ class Hexagon extends Component {
     this.element.onclick = this.onclick.bind(this)
   }
 
-  onclick () {}
+  onclick () {
+    const {
+      coordinates,
+      dispatch
+    } = this
+
+    dispatch({
+      type: 'TOGGLE_CELL',
+      coordinates
+    })
+  }
 
   render (state) {
     const {
@@ -43,7 +53,7 @@ class Hexagon extends Component {
 
       this.element.setAttributeNS(null, 'points', points)
 
-      const transform = `translate(${j * unit * 1.65},${i * unit * 1.8 + j * unit * sin60})`
+      const transform = `translate(${j * unit * 1.6},${i * unit * 1.8 + j * unit * sin60 - window.screen.height})`
 
       this.element.setAttributeNS(null, 'transform', transform)
     }
