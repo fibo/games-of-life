@@ -13,9 +13,11 @@ All notable changes to this project will be documented in this file.
 <sub>This project adheres to [Semantic Versioning](http://semver.org/).
 Changelog format adheres to [Keep a Changelog](http://keepachangelog.com/)</sub>
 
-## [Unreleased]
+## [0.6.0] - 2018-10-25
 
-- Classic demo (in vanilla JS) **To be completed**
+### Fixed
+
+- Improved hexagonal demo, implemented in vanilla JS.
 
 ## [0.5.4] - 2017-10-07
 

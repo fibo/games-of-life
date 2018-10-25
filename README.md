@@ -20,11 +20,10 @@
 
 ## Demo
 
-I created this hexagonal *Game of Life* demo to show that this package generalize
-the *Game of Life* in any of its variations.
+I created this hexagonal *Game of Life* demo to show that this package generalize the *Game of Life* in any of its variations.
 Click the image below to try it!
 
-[![Hexagonal game of life](http://g14n.info/games-of-life/svg/HexagonalGoL.svg)](http://g14n.info/games-of-life/demo/hexagonal){:.responsive}
+[![Hexagonal game of life](http://g14n.info/games-of-life/examples/hexagonal/hexagonal-game-of-life.png)](http://g14n.info/games-of-life/examples/hexagonal/)
 
 ## Installation
 
