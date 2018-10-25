@@ -15,7 +15,7 @@ title: games-of-life
 [![NPM version](https://badge.fury.io/js/games-of-life.svg)](http://badge.fury.io/js/games-of-life)
 [![Badge size](https://badge-size.herokuapp.com/fibo/games-of-life/master/dist/games-of-life.min.js)](https://github.com/fibo/games-of-life/blob/master/dist/games-of-life.min.js)
 [![Build Status](https://travis-ci.org/fibo/games-of-life.svg?branch=master)](https://travis-ci.org/fibo/games-of-life?branch=master)
-[![Dependency Status](https://gemnasium.com/fibo/games-of-life.svg)](https://gemnasium.com/fibo/games-of-life)
+[![No deps](https://img.shields.io/badge/dependencies-none-green.svg)](https://github.com/fibo/games-of-life)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 [![Change log](https://img.shields.io/badge/change-log-blue.svg)](http://g14n.info/games-of-life/changelog)
 
@@ -23,11 +23,10 @@ title: games-of-life
 
 ## Demo
 
-I created this hexagonal *Game of Life* demo to show that this package generalize
-the *Game of Life* in any of its variations.
+I created this hexagonal *Game of Life* demo to show that this package generalize the *Game of Life* in any of its variations.
 Click the image below to try it!
 
-[![Hexagonal game of life](http://g14n.info/games-of-life/svg/HexagonalGoL.svg)](http://g14n.info/games-of-life/demo/hexagonal){:.responsive}
+[![Hexagonal game of life](http://g14n.info/games-of-life/examples/hexagonal/hexagonal-game-of-life.png)](http://g14n.info/games-of-life/examples/hexagonal/)
 
 ## Installation
 
@@ -45,7 +44,7 @@ You could also use a CDN adding this to your HTML page
 
 ## Idea
 
-On the 30th of May 2015, I have participated in a [Coderetreat at Milan XPUG](http://coderetreat.org/events/xpug-milan-coderetreat).
+On the 30th of May 2015, I have participated in a [Coderetreat](http://coderetreat.org/) at Milan XPUG.
 
 We have had so much fun coding implementations of the [Game of Life][1].
 

@@ -13,7 +13,7 @@ All notable changes to this project will be documented in this file.
 <sub>This project adheres to [Semantic Versioning](http://semver.org/).
 Changelog format adheres to [Keep a Changelog](http://keepachangelog.com/)</sub>
 
-## [0.6.0] - 2018-10-25
+## [0.5.5] - 2018-10-25
 
 ### Fixed
 
