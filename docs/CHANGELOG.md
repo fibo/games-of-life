@@ -75,6 +75,7 @@ Changelog format adheres to [Keep a Changelog](http://keepachangelog.com/)</sub>
 - source map
 
 [Unreleased]: https://github.com/fibo/{{ package.name }}/compare/v{{ package.version }}...HEAD
+
 {% for tag in tags offset:2 %}
   {% assign current = tags[forloop.index0].name %}
   {% assign previous = tags[forloop.index].name %}
