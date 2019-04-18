@@ -81,4 +81,4 @@ Changelog format adheres to [Keep a Changelog](http://keepachangelog.com/)</sub>
   {% assign previous = tags[forloop.index].name %}
   [{{ current }}]: https://github.com/fibo/{{ package.name }}/compare/{{ previous }}...{{ current }}
 {% endfor %}
-[0.4.0]: https://github.com/fibo/{{ package.name }}/compare/v0.3.0...v0.4.0
+
