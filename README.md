@@ -186,13 +186,6 @@ for (var i = -1; i < 1; i++) {
 }
 ```
 
-## See also
-
-External links:
-
-* [LifeWiki][2]
-* [Hacker News thread][3]
-
 ## License
 
 [MIT](http://g14n.info/mit-license)
