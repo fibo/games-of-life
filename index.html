@@ -18,11 +18,14 @@
       }
 
       .container {
-        min-height: 71vh;
         display: flex;
         flex-direction: column;
+        width: fit-content;
         background-color: #f0f0f0;
-        --cell-size: 4px;
+        cursor: none;
+        --cell-size: 6px;
+        min-height: 71vh;
+        height: fit-content;
       }
       .row {
         display: flex;
@@ -31,6 +34,12 @@
       .cell {
         width: var(--cell-size);
         height: var(--cell-size);
+        border: 1px solid transparent;
+      }
+      .cell:hover {
+        border-color: red;
+        border-radius: 50%;
+        background-color: red;
       }
       .alive {
         background-color: #333333;
@@ -50,6 +59,18 @@
         outline-color: black;
       }
 
+      .field {
+        display: flex;
+        gap: 0.5em;
+        align-items: center;
+        width: fit-content;
+      }
+
+      input[type="checkbox"] {
+        accent-color: black;
+        outline-color: black;
+      }
+
       footer {
         margin: 1em;
       }
@@ -62,6 +83,11 @@
       <p>
         Create any Game of Life variation.
       </p>
+
+      <div class="field">
+        <label for="is-torus">Torus</label>
+        <input type="checkbox" id="is-torus">
+      </div>
 
       <h2>Hexagonal Demo</h2>
 
@@ -84,45 +110,64 @@
       const isAliveMap = new Map();
       const isAliveNextMap = new Map();
 
-      function addRow(container, cellSize, width, i) {
+      let numCols = 1;
+      let numRows = 1;
+
+      function addCell(i, j) {
+        const cell = document.createElement('div');
+        cell.classList.add('cell');
+        cell.dataset.row = i;
+        cell.dataset.col = j;
+        const id = [i, j].join();
+        if (Math.random() < 0.1) {
+          isAliveMap.set(id, true);
+          cell.classList.add('alive');
+        } else {
+          isAliveMap.set(id, false);
+        }
+        cell.onclick = () => {
+          // Glider
+          isAliveMap.set([i-1, j-1].join(), false);
+          isAliveMap.set([i-1,  j ].join(), true);
+          isAliveMap.set([i-1, j+1].join(), false);
+          isAliveMap.set([ i , j-1].join(), false);
+          isAliveMap.set([ i ,  j ].join(), false);
+          isAliveMap.set([ i , j+1].join(), true);
+          isAliveMap.set([i+1, j-1].join(), true);
+          isAliveMap.set([i+1,  j ].join(), true);
+          isAliveMap.set([i+1, j+1].join(), true);
+        };
+        return cell;
+      }
+
+      function addRow(numCols, i) {
         const list = [];
-        const row = document.createElement('div');
-        row.classList.add('row');
-        container.appendChild(row);
+        const div = document.createElement('div');
+        div.classList.add('row');
         let j = 0;
-        while (j * cellSize < width) {
-          const cell = document.createElement('div');
-          cell.classList.add('cell');
-          cell.dataset.row = i;
-          cell.dataset.col = j;
-          const id = [i, j].join();
-          if (Math.random() < 0.7) {
-            isAliveMap.set(id, true);
-            cell.classList.add('alive');
-          } else {
-            isAliveMap.set(id, false);
-          }
-          cell.onpointerover = () => {
-            isAliveMap.set(id, true);
-          };
+        while (j  < numCols) {
+          const cell = addCell(i, j);
           list.push(cell);
           j++;
         }
-        row.append(...list);
-        return list;
+        div.append(...list);
+        return { div, cells: list }
       }
 
       function fillContainer() {
         const cells = [];
         const container = document.querySelector('.container');
         const cellSize = parseInt(getComputedStyle(container).getPropertyValue('--cell-size'));
+        const { height } = container.getBoundingClientRect();
 
-        const { width, height } = container.getBoundingClientRect();
+        numRows = Math.floor(height / (cellSize + 2));
+        numCols = Math.floor(window.innerWidth / (cellSize + 2));
 
         let i = 0;
-        while (i * cellSize < height) {
-          const rowCells = addRow(container, cellSize, width, i);
-          cells.push(rowCells);
+        while (i < numRows) {
+          const row = addRow(numCols, i);
+          container.appendChild(row.div);
+          cells.push(row.cells);
           i++;
         }
 
@@ -131,11 +176,7 @@
 
       const cells = fillContainer();
 
-      const numCols = cells[0].length;
-      const numRows = cells.length;
-
-      // Then all other cases.
-      function getNeighboursOf([i, j]) {
+      function boringPlane([i, j]) {
         // First corners, then borders, then all other cases.
 
         // Top left corner.
@@ -198,6 +239,28 @@
         ];
       }
 
+      function torus([i, j]) {
+        const prevRow = i === 0 ? numRows - 1 : i - 1;
+        const prevCol = j === 0 ? numCols - 1 : j - 1;
+        const nextRow = i === numRows - 1 ? 0 : i + 1;
+        const nextCol = j === numCols - 1 ? 0 : j + 1;
+        return [
+            [prevRow, prevCol], [prevRow, j], [prevRow, nextCol],
+            [   i   , prevCol],               [   i   , nextCol],
+            [nextRow, prevCol], [nextRow, j], [nextRow, nextCol]
+        ];
+      }
+
+      let isTorus = true;
+
+      function getNeighboursOf([i, j]) {
+        if (isTorus) {
+            return torus([i, j]);
+        }
+        // Boring plane.
+        return boringPlane([i, j]);
+      }
+
       const world = createWorld(getNeighboursOf);
       const transitionRule = classicTransitionRule.bind(null, 2, 3, 3);
       const evolve = world(transitionRule);
@@ -234,7 +297,12 @@
         requestAnimationFrame(loop);
       }
 
-      requestAnimationFrame(loop);
+      loop();
+
+      const torusCheckbox = document.querySelector('#is-torus');
+      torusCheckbox.addEventListener('change', (event) => {
+        isTorus = event.target.checked;
+      });
     </script>
   </body>
 </html>
