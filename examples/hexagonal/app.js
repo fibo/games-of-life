@@ -1,5 +1,5 @@
-const Root = require('./components/Root')
-const reducer = require('./reducer')
+import { Root } from './components/Root.js'
+import { reducer } from './reducer.js';
 
 /**
  * App loader.
@@ -7,7 +7,7 @@ const reducer = require('./reducer')
  * window.addEventListener('load', app(state))
  */
 
-function app (initialState) {
+export function app (initialState) {
   return function () {
     let currentState = initialState
 
@@ -26,5 +26,3 @@ function app (initialState) {
     dispatch({ type: 'INIT' })
   }
 }
-
-module.exports = app

@@ -1,6 +1,6 @@
 {
   "name": "games-of-life",
-  "description": "Can create any Game of Life variation",
+  "description": "Create any Game of Life variation",
   "version": "1.0.0",
   "type": "module",
   "exports": "./src/games-of-life.js",

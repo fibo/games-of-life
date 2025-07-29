@@ -1,6 +1,6 @@
-const Component = require('./Component')
+import { Component } from './Component.js'
 
-class SvgIcon extends Component {
+export class SvgIcon extends Component {
   constructor (dispatch, element) {
     super(dispatch, element)
 
@@ -10,5 +10,3 @@ class SvgIcon extends Component {
     this.path = this.createElementNS('path')
   }
 }
-
-module.exports = SvgIcon

@@ -1,11 +1,10 @@
-const Component = require('./Component')
-
-const Hexagon = require('./Hexagon')
+import { Component } from './Component.js'
+import { Hexagon } from './Hexagon.js'
 
 const screenHeight = window.screen.height
 const screenWidth = window.screen.width
 
-class World extends Component {
+export class World extends Component {
   constructor (dispatch, element) {
     super(dispatch, element)
 
@@ -85,5 +84,3 @@ class World extends Component {
     clearInterval(this.loop)
   }
 }
-
-module.exports = World

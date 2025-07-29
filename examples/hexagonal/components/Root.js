@@ -1,9 +1,8 @@
-const Component = require('./Component')
+import { Component } from './Component.js'
+import { Footer } from './Footer.js'
+import { World } from './World.js'
 
-const Footer = require('./Footer')
-const World = require('./World')
-
-class Root extends Component {
+export class Root extends Component {
   constructor (dispatch, element) {
     super(dispatch, element)
 
@@ -16,5 +15,3 @@ class Root extends Component {
     })
   }
 }
-
-module.exports = Root

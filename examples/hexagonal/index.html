@@ -1,0 +1,103 @@
+<!DOCTYPE>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Hexagonal Game of Life</title>
+
+    <meta name="author" content="Gianluca Casati">
+    <meta name="description" content="is a Game of Life implementation in hexagonal space">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <link rel="canonical" href="https://fibo.github.io/games-of-life/examples/hexagonal/index.html"/>
+
+    <meta name="theme-color" content="#333333">
+
+    <meta property="og:title" content="Hexagonal Game of Life">
+    <meta property="og:description" content="is a Game of Life implementation in hexagonal space">
+    <meta property="og:image" content="https://fibo.github.io/games-of-life/examples/hexagonal/hexagonal-game-of-life.png">
+    <meta property="og:url" content="http://fibo.github.io/games-of-life/examples/hexagonal/index.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@GianlucaCasati">
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      html, body {
+        min-height: 100%;
+        width: 100%;
+      }
+
+      svg.World {
+        background-color: #333333;
+        width: 100%;
+        height: 100%;
+      }
+
+      footer {
+        height: 10vh;
+        margin-top: -10vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      svg.Icon {
+        height: 8vh;
+        fill: rgba(17, 17, 17, 0.45);
+        transition: fill .5s;
+      }
+
+      svg.Icon:hover {
+        fill: rgba(17, 17, 17, 0.71);
+        transition: fill .5s;
+      }
+
+      svg.Icon:focus {
+        fill: rgba(17, 17, 17, 0.71);
+        transition: fill .5s;
+      }
+
+      .Hexagon {
+        fill: gray;
+      }
+
+      .Hexagon:hover {
+        transition: opacity 0.4s;
+        opacity: 0.7;
+      }
+
+      .Hexagon.alive {
+        fill: goldenrod;
+        transition: fill 0.1s;
+      }
+    </style>
+  </head>
+  <body>
+    <svg class="World"></svg>
+
+    <footer>
+      <svg viewBox="0 0 448 512" class="PlayButton Icon"></svg>
+    </footer>
+
+    <script type="importmap">
+      { "imports": { "games-of-life": "../../src/games-of-life.js" } }
+    </script>
+
+    <script type="module">
+      import { app } from './app.js';
+
+      const initialState = {
+        cells: [],
+        play: false,
+        quantumTime: 400,
+        unit: 17
+      };
+
+      addEventListener('load', app(initialState));
+    </script>
+  </body>
+</html>

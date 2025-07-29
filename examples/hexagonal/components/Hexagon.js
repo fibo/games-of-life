@@ -1,6 +1,6 @@
-const Component = require('./Component')
+import { Component } from './Component.js'
 
-class Hexagon extends Component {
+export class Hexagon extends Component {
   constructor (dispatch, element, coordinates) {
     super(dispatch, element)
 
@@ -69,5 +69,3 @@ class Hexagon extends Component {
     }
   }
 }
-
-module.exports = Hexagon

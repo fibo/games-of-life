@@ -35,11 +35,11 @@ function pattern0 () {
   return false
 }
 
-function pattern1 () {
+function pattern1 (cell) {
   return cell === 0
 }
 
-function horyzontalBlinker (cell) {
+function horizontalBlinker (cell) {
   return (cell === 3) || (cell === 4) || (cell === 5)
 }
 
@@ -62,6 +62,6 @@ function patternsAreEqual (patternA, patternB) {
 
 test('grid3x3AsMonoDimensionalArray', () => {
   assert.ok(patternsAreEqual(evolve(pattern1), pattern0))
-  assert.ok(patternsAreEqual(evolve(verticalBlinker), horyzontalBlinker))
-  assert.ok(patternsAreEqual(evolve(horyzontalBlinker), verticalBlinker))
+  assert.ok(patternsAreEqual(evolve(verticalBlinker), horizontalBlinker))
+  assert.ok(patternsAreEqual(evolve(horizontalBlinker), verticalBlinker))
 })

@@ -1,4 +1,4 @@
-class Component {
+export class Component {
   constructor (dispatch, element) {
     this.dispatch = dispatch
     this.element = element
@@ -25,12 +25,8 @@ class Component {
   }
 
   render (state) {
-    var component = this.component
-
-    Object.keys(component).forEach(function (key) {
-      component[key].render(state)
-    })
+    Object.values(this.component).forEach(
+      (component) => component.render(state)
+    )
   }
 }
-
-module.exports = Component

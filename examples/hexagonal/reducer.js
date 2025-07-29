@@ -1,12 +1,10 @@
-const gamesOfLife = require('games-of-life')
+import { createWorld, classicTransitionRule } from 'games-of-life'
+import { hexagonalSpace } from './space.js'
 
-const evolveRule = gamesOfLife.createWorld(
-  gamesOfLife.space.hexagonal
-)(
-  gamesOfLife.classicTransitionRule.bind(null, 1, 2, 3)
-)
+const world = createWorld(hexagonalSpace)
+const evolveRule = world(classicTransitionRule.bind(null, 1, 2, 3))
 
-function reducer (currenState, action) {
+export function reducer (currenState, action) {
   const state = Object.assign({}, currenState)
 
   switch (action.type) {
@@ -79,5 +77,3 @@ function reducer (currenState, action) {
     default: return state
   }
 }
-
-module.exports = reducer

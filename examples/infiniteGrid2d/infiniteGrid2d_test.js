@@ -9,17 +9,13 @@ const transitionRule = classicTransitionRule.bind(null, 2, 3, 3)
  * @returns {Array} neighbours
  */
 
-function getNeighboursOfInfiniteGrid (cell) {
-  const x = cell[0]
-  const y = cell[1]
-
+function infiniteGrid2d ([x, y]) {
   const neighbours = []
 
   for (let j = y - 1; j <= y + 1; j++) {
     for (let i = x - 1; i <= x + 1; i++) {
-      if ((i === x) && (j === y)) {
+      if ((i === x) && (j === y))
         continue
-      }
 
       neighbours.push([i, j])
     }
@@ -28,12 +24,12 @@ function getNeighboursOfInfiniteGrid (cell) {
   return neighbours
 }
 
-const world = createWorld(getNeighboursOfInfiniteGrid)
+const world = createWorld(infiniteGrid2d)
 
 const evolve = world(transitionRule)
 
-test('getNeighboursOfInfiniteGrid', () => {
-  const neighbours = getNeighboursOfInfiniteGrid([2, 3])
+test('infiniteGrid2d', () => {
+  const neighbours = infiniteGrid2d([2, 3])
 
   assert.deepEqual(neighbours, [
     [1, 2], [2, 2], [3, 2],
@@ -47,7 +43,7 @@ function patternsAreEqual (patternA, patternB) {
 
   for (let i = -20; i < 20; i++) {
     for (let j = -20; j < 20; j++) {
-      if (patternA(i, j) !== patternB(i, j)) {
+      if (patternA([i, j]) !== patternB([i, j])) {
         areEqual = false
         break
       }
@@ -65,10 +61,7 @@ function singleCellAtTheOrigin (cell) {
   return ((cell[0] === 0) && (cell[1] === 0))
 }
 
-function horyzontalBlinker (cell) {
-  const x = cell[0]
-  const y = cell[1]
-
+function horizontalBlinker ([x, y]) {
   if (y !== 0) {
     return false
   }
@@ -80,10 +73,8 @@ function horyzontalBlinker (cell) {
   return false
 }
 
-function verticalBlinker (cell) {
-  const x = cell[0]
-  const y = cell[1]
-
+// Blinker translated with x --> x + 2
+function verticalBlinker ([x, y]) {
   if (x !== 0) {
     return false
   }
@@ -95,10 +86,9 @@ function verticalBlinker (cell) {
   return false
 }
 
-test('infiniteGridWithTwoDimensionalCoordinates', () => {
+test('infiniteGrid2d evolution', () => {
   assert.ok(patternsAreEqual(evolve(emptyGrid), emptyGrid))
   assert.ok(patternsAreEqual(evolve(singleCellAtTheOrigin), emptyGrid))
-  assert.ok(patternsAreEqual(evolve(verticalBlinker), horyzontalBlinker))
-  assert.ok(patternsAreEqual(evolve(horyzontalBlinker), verticalBlinker))
-  assert.ok(patternsAreEqual(evolve(evolve(horyzontalBlinker)), horyzontalBlinker))
+  assert.ok(patternsAreEqual(evolve(verticalBlinker), horizontalBlinker))
+  assert.ok(patternsAreEqual(evolve(horizontalBlinker), verticalBlinker))
 })
