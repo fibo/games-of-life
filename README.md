@@ -9,34 +9,27 @@
 [See also](#see-also) |
 [License](#license)
 
-[![NPM version](https://badge.fury.io/js/games-of-life.svg)](http://badge.fury.io/js/games-of-life)
-[![Badge size](https://badge-size.herokuapp.com/fibo/games-of-life/master/dist/games-of-life.min.js)](https://github.com/fibo/games-of-life/blob/master/dist/games-of-life.min.js)
-[![Build Status](https://travis-ci.org/fibo/games-of-life.svg?branch=master)](https://travis-ci.org/fibo/games-of-life?branch=master)
-[![No deps](https://img.shields.io/badge/dependencies-none-green.svg)](https://github.com/fibo/games-of-life)
-[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
-[![Change log](https://img.shields.io/badge/change-log-blue.svg)](http://g14n.info/games-of-life/changelog)
-
-[![Whatchers](http://g14n.info/svg/github/watchers/games-of-life.svg)](https://github.com/fibo/games-of-life/watchers) [![Stargazers](http://g14n.info/svg/github/stars/games-of-life.svg)](https://github.com/fibo/games-of-life/stargazers) [![Forks](http://g14n.info/svg/github/forks/games-of-life.svg)](https://github.com/fibo/games-of-life/network/members)
+![No deps](https://fibo.github.io/svg/badges/dependencies-none.svg)
 
 ## Demo
 
 I created this hexagonal *Game of Life* demo to show that this package generalize the *Game of Life* in any of its variations.
 Click the image below to try it!
 
-[![Hexagonal game of life](http://g14n.info/games-of-life/examples/hexagonal/hexagonal-game-of-life.png)](http://g14n.info/games-of-life/examples/hexagonal/)
+[![Hexagonal game of life](https://fibo.github.io/games-of-life/examples/hexagonal/hexagonal-game-of-life.png)](https://fibo.github.io/games-of-life/examples/hexagonal/index.html)
 
 ## Installation
 
 With [npm](https://npmjs.org/) do
 
-```bash
+```shell
 npm install games-of-life
 ```
 
-You could also use a CDN adding this to your HTML page
+You can also use a CDN adding this to your HTML page
 
 ```html
-<script src="https://unpkg.com/games-of-life/dist/games-of-life.min.js"></script>
+<script src="https://unpkg.com/games-of-life"></script>
 ```
 
 ## Idea
@@ -188,7 +181,7 @@ for (var i = -1; i < 1; i++) {
 
 ## License
 
-[MIT](http://g14n.info/mit-license)
+[MIT](https://fibo.github.io/mit-license)
 
 [1]: http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life "Game of Life"
 [2]: http://www.conwaylife.com/wiki/Main_Page "LikeWiki"

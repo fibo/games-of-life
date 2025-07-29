@@ -1,35 +1,10 @@
 {
   "name": "games-of-life",
   "description": "is a Mathematical solution to any Game of Life variation",
-  "version": "0.5.4",
-  "main": "src/games-of-life.js",
+  "version": "1.0.0",
+  "exports": "src/games-of-life.js",
   "scripts": {
-    "build": "run-s test browserify minify docs; git status",
-    "browserify": "run-p browserify:*",
-    "browserify:dist": "browserify -r ./src/${npm_package_name}.js:${npm_package_name} -o dist/${npm_package_name}.js",
-    "browserify:hexagonal_example": "NODE_PATH=src browserify examples/hexagonal/index.js -o docs/examples/hexagonal/bundle.js",
-    "docs": "run-p docs:*",
-    "docs:_data:package.json": "cp package.json docs/_data",
-    "docs:_data:tags.json": "wget https://api.github.com/repos/fibo/${npm_package_name}/tags -O docs/_data/tags.json",
-    "docs:homepage": "echo \"---\ntitle: $npm_package_name\n---\" > docs/index.md; cat README.md >> docs/index.md",
-    "lint": "standa",
-    "minify": "cd dist; uglifyjs ${npm_package_name}.js --source-map --output ${npm_package_name}.min.js --compress --mangle -b beautify=false,preamble='\"// http://g14n.info/games-of-life\"'; cd -",
-    "postversion": "git push origin v${npm_package_version}; npm publish; git push origin master",
-    "example_hexagonal": "NODE_PATH=src budo examples/hexagonal/index.js --dir docs/examples/hexagonal/ --serve bundle.js --open --live",
-    "test": "mocha --bail --require should --reporter min --recursive"
-  },
-  "pre-commit": [
-    "lint",
-    "test"
-  ],
-  "standa": {
-    "globals": [
-      "describe",
-      "it"
-    ],
-    "ignore": [
-      "dist/"
-    ]
+    "test": "node --test"
   },
   "repository": {
     "type": "git",
@@ -42,20 +17,11 @@
   ],
   "author": {
     "name": "Gianluca Casati",
-    "url": "http://g14n.info"
+    "url": "https://fibo.github.io/"
   },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/fibo/games-of-life/issues"
   },
-  "homepage": "http://g14n.info/games-of-life",
-  "devDependencies": {
-    "budo": "^11.5.0",
-    "mocha": "^4.0.1",
-    "npm-run-all": "^4.1.3",
-    "pre-commit": "^1.2.2",
-    "should": "^13.1.0",
-    "standa": "^12.0.0",
-    "uglify-js": "^3.1.3"
-  }
+  "homepage": "https://fibo.github.io/games-of-life"
 }
