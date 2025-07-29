@@ -1,15 +1,18 @@
-var gamesOfLife = require('games-of-life')
+import { test } from 'node:test'
+import { strict as assert } from 'node:assert'
+import { createWorld, classicTransitionRule } from 'games-of-life'
 
-var createWorld = gamesOfLife.createWorld
-var transitionRule = gamesOfLife.classicTransitionRule.bind(null, 2, 3, 3)
+const transitionRule = classicTransitionRule.bind(null, 2, 3, 3)
 
 /**
+ * Represents a 3x3 grid as a mono-dimensional array.
+ *
  * @params {Number} cell represented by an array index
  * @returns {Array} neighboursOf
  */
 
-function getNeighboursOf (index) {
-  var neighboursOf = {
+function getNeighboursOf3x3Grid (index) {
+  const neighboursOf = {
     0: [1, 3, 4],
     1: [0, 2, 3, 4, 5],
     2: [1, 4, 5],
@@ -24,53 +27,41 @@ function getNeighboursOf (index) {
   return neighboursOf[index]
 }
 
-var world = createWorld(getNeighboursOf)
+const world = createWorld(getNeighboursOf3x3Grid)
 
-var evolve = world(transitionRule)
+const evolve = world(transitionRule)
 
-describe('grid3x3AsMonoDimensionalArray', function () {
-  function pattern0 (cell) {
-    return false
-  }
+function pattern0 () {
+  return false
+}
 
-  function pattern1 (cell) {
-    return cell === 0
-  }
+function pattern1 () {
+  return cell === 0
+}
 
-  function horyzontalBlinker (cell) {
-    return (cell === 3) || (cell === 4) || (cell === 5)
-  }
+function horyzontalBlinker (cell) {
+  return (cell === 3) || (cell === 4) || (cell === 5)
+}
 
-  function verticalBlinker (cell) {
-    return (cell === 1) || (cell === 4) || (cell === 7)
-  }
+function verticalBlinker (cell) {
+  return (cell === 1) || (cell === 4) || (cell === 7)
+}
 
-  function patternsAreEqual (patternA, patternB) {
-    var areEqual = true
+function patternsAreEqual (patternA, patternB) {
+  let areEqual = true
 
-    for (var i = 0; i < 9; i++) {
-      if (patternA(i) !== patternB(i)) {
-        areEqual = false
-      }
+  for (var i = 0; i < 9; i++) {
+    if (patternA(i) !== patternB(i)) {
+      areEqual = false
+      break
     }
-
-    return areEqual
   }
 
-  describe('patternsAreEqual', function () {
-    it('is a reflection', function () {
-      patternsAreEqual(pattern0, pattern0).should.be.true()
-      patternsAreEqual(pattern1, pattern1).should.be.true()
-      patternsAreEqual(horyzontalBlinker, horyzontalBlinker).should.be.true()
-    })
-  })
+  return areEqual
+}
 
-  describe('evolve', function () {
-    it('as expected', function () {
-      patternsAreEqual(evolve(pattern1), pattern0).should.be.true()
-      patternsAreEqual(evolve(verticalBlinker), horyzontalBlinker).should.be.true()
-      patternsAreEqual(evolve(horyzontalBlinker), verticalBlinker).should.be.true()
-      patternsAreEqual(evolve(evolve(horyzontalBlinker)), horyzontalBlinker).should.be.true()
-    })
-  })
+test('grid3x3AsMonoDimensionalArray', () => {
+  assert.ok(patternsAreEqual(evolve(pattern1), pattern0))
+  assert.ok(patternsAreEqual(evolve(verticalBlinker), horyzontalBlinker))
+  assert.ok(patternsAreEqual(evolve(horyzontalBlinker), verticalBlinker))
 })

@@ -1,6 +1,6 @@
 # games-of-life
 
-> is a Mathematical solution to any [Game of Life][1] variation
+> Can create any [Game of Life][1] variation
 
 [Demo](#demo) |
 [Installation](#installation) |
@@ -76,14 +76,14 @@ A simple example is the [infinite grid with two dimensional coordinates](https:/
 Define a *getNeighboursOf* which returns the neighbours of a given cell.
 
 ```javascript
-function getNeighboursOf (cell) {
-  var x = cell[0]
-  var y = cell[1]
+function infiniteGrid2d (cell) {
+  const x = cell[0]
+  const y = cell[1]
 
-  var neighbours = []
+  const neighbours = []
 
-  for (var j = y - 1; j <= y + 1; j++) {
-    for (var i = x - 1; i <= x + 1; i++) {
+  for (let j = y - 1; j <= y + 1; j++) {
+    for (let i = x - 1; i <= x + 1; i++) {
       if ((i === x) && (j === y)) {
         continue
       }
@@ -94,23 +94,17 @@ function getNeighboursOf (cell) {
 
   return neighbours
 }
-
-// Alias the adjacency function  with a more meaningful name,
-// to improve semantic in the example code below.
-var infiniteGrid2d = getNeighboursOf
 ```
 
 Create a *Game of Life* world, and get the *evolve* function
 
 ```javascript
-var gamesOfLife = require('games-of-life')
+import { createWorld, classicTransitionRule } from 'games-of-life'
 
-var createWorld    = gamesOfLife.createWorld
-var transitionRule = gamesOfLife.classicTransitionRule.bind(null, 2, 3, 3)
+const world = createWorld(infiniteGrid2d)
+const transitionRule = classicTransitionRule.bind(null, 2, 3, 3)
 
-var world = createWorld(infiniteGrid2d)
-
-var evolve = world(transitionRule)
+const evolve = world(transitionRule)
 ```
 
 The empty grid is represented by a function that always returns false, so
@@ -154,8 +148,8 @@ function horyzontalBlinker (cell) {
 }
 
 function verticalBlinker (cell) {
-  var x = cell[0]
-  var y = cell[1]
+  const x = cell[0]
+  const y = cell[1]
 
   if (x !== 0) {
     return false
@@ -172,8 +166,8 @@ function verticalBlinker (cell) {
 You may check that the *verticalBlinker* evolves in the *horyzontalBlinker* and vice versa
 
 ```javascript
-for (var i = -1; i < 1; i++) {
-  for (var j = -1; j < 1; j++) {
+for (let i = -1; i < 1; i++) {
+  for (let j = -1; j < 1; j++) {
     console.log(evolve(verticalBlinker)(i, j) ===  horyzontalBlinker(i, j)) // true
   }
 }

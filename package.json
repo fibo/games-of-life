@@ -1,8 +1,9 @@
 {
   "name": "games-of-life",
-  "description": "is a Mathematical solution to any Game of Life variation",
+  "description": "Can create any Game of Life variation",
   "version": "1.0.0",
-  "exports": "src/games-of-life.js",
+  "type": "module",
+  "exports": "./src/games-of-life.js",
   "scripts": {
     "test": "node --test"
   },

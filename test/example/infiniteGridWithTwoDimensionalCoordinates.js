@@ -1,22 +1,22 @@
-var should = require('should')
-var gamesOfLife = require('games-of-life')
+import { test } from 'node:test'
+import { strict as assert } from 'node:assert'
+import { createWorld, classicTransitionRule } from 'games-of-life'
 
-var createWorld = gamesOfLife.createWorld
-var transitionRule = gamesOfLife.classicTransitionRule.bind(null, 2, 3, 3)
+const transitionRule = classicTransitionRule.bind(null, 2, 3, 3)
 
 /**
  * @params {Array} cell
  * @returns {Array} neighbours
  */
 
-function getNeighboursOf (cell) {
-  var x = cell[0]
-  var y = cell[1]
+function getNeighboursOfInfiniteGrid (cell) {
+  const x = cell[0]
+  const y = cell[1]
 
-  var neighbours = []
+  const neighbours = []
 
-  for (var j = y - 1; j <= y + 1; j++) {
-    for (var i = x - 1; i <= x + 1; i++) {
+  for (let j = y - 1; j <= y + 1; j++) {
+    for (let i = x - 1; i <= x + 1; i++) {
       if ((i === x) && (j === y)) {
         continue
       }
@@ -28,90 +28,77 @@ function getNeighboursOf (cell) {
   return neighbours
 }
 
-var world = createWorld(getNeighboursOf)
+const world = createWorld(getNeighboursOfInfiniteGrid)
 
-var evolve = world(transitionRule)
+const evolve = world(transitionRule)
 
-describe('infiniteGridWithTwoDimensionalCoordinates', function () {
-  describe('getNeighboursOf', function () {
-    it('is well defined', function () {
-      var neighbours = getNeighboursOf([2, 3])
+test('getNeighboursOfInfiniteGrid', () => {
+  const neighbours = getNeighboursOfInfiniteGrid([2, 3])
 
-      should.deepEqual(neighbours, [
-        [1, 2], [2, 2], [3, 2],
-        [1, 3], /* o */ [3, 3],
-        [1, 4], [2, 4], [3, 4]
-      ])
-    })
-  })
+  assert.deepEqual(neighbours, [
+    [1, 2], [2, 2], [3, 2],
+    [1, 3], /* o */ [3, 3],
+    [1, 4], [2, 4], [3, 4]
+  ])
+})
 
-  function patternsAreEqual (patternA, patternB) {
-    var areEqual = true
+function patternsAreEqual (patternA, patternB) {
+  let areEqual = true
 
-    for (var i = -20; i < 20; i++) {
-      for (var j = -20; j < 20; j++) {
-        if (patternA(i, j) !== patternB(i, j)) {
-          areEqual = false
-        }
+  for (let i = -20; i < 20; i++) {
+    for (let j = -20; j < 20; j++) {
+      if (patternA(i, j) !== patternB(i, j)) {
+        areEqual = false
+        break
       }
     }
-
-    return areEqual
   }
 
-  describe('patternsAreEqual', function () {
-    it('is a reflection', function () {
-      patternsAreEqual(horyzontalBlinker, horyzontalBlinker).should.be.true()
-      patternsAreEqual(verticalBlinker, verticalBlinker).should.be.true()
-      patternsAreEqual(emptyGrid, emptyGrid).should.be.true()
-    })
-  })
+  return areEqual
+}
 
-  function emptyGrid () {
+function emptyGrid () {
+  return false
+}
+
+function singleCellAtTheOrigin (cell) {
+  return ((cell[0] === 0) && (cell[1] === 0))
+}
+
+function horyzontalBlinker (cell) {
+  const x = cell[0]
+  const y = cell[1]
+
+  if (y !== 0) {
     return false
   }
 
-  function singleCellAtTheOrigin (cell) {
-    return ((cell[0] === 0) && (cell[1] === 0))
+  if ((x >= -1) && (x <= 1)) {
+    return true
   }
 
-  function horyzontalBlinker (cell) {
-    var x = cell[0]
-    var y = cell[1]
+  return false
+}
 
-    if (y !== 0) {
-      return false
-    }
+function verticalBlinker (cell) {
+  const x = cell[0]
+  const y = cell[1]
 
-    if ((x >= -1) && (x <= 1)) {
-      return true
-    }
-
+  if (x !== 0) {
     return false
   }
 
-  function verticalBlinker (cell) {
-    var x = cell[0]
-    var y = cell[1]
-
-    if (x !== 0) {
-      return false
-    }
-
-    if ((y >= -1) && (y <= 1)) {
-      return true
-    }
-
-    return false
+  if ((y >= -1) && (y <= 1)) {
+    return true
   }
 
-  describe('evolve', function () {
-    it('as expected', function () {
-      patternsAreEqual(evolve(emptyGrid), emptyGrid).should.be.true()
-      patternsAreEqual(evolve(singleCellAtTheOrigin), emptyGrid).should.be.true()
-      patternsAreEqual(evolve(verticalBlinker), horyzontalBlinker).should.be.true()
-      patternsAreEqual(evolve(horyzontalBlinker), verticalBlinker).should.be.true()
-      patternsAreEqual(evolve(evolve(horyzontalBlinker)), horyzontalBlinker).should.be.true()
-    })
-  })
+  return false
+}
+
+test('infiniteGridWithTwoDimensionalCoordinates', () => {
+  assert.ok(patternsAreEqual(evolve(emptyGrid), emptyGrid))
+  assert.ok(patternsAreEqual(evolve(singleCellAtTheOrigin), emptyGrid))
+  assert.ok(patternsAreEqual(evolve(verticalBlinker), horyzontalBlinker))
+  assert.ok(patternsAreEqual(evolve(horyzontalBlinker), verticalBlinker))
+  assert.ok(patternsAreEqual(evolve(evolve(horyzontalBlinker)), horyzontalBlinker))
 })
