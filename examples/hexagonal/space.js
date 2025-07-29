@@ -58,7 +58,7 @@
  * @returns {Array} neighbours
  */
 
-function hexagonal (cell) {
+export function hexagonalSpace (cell) {
   var x = cell[0]
   var y = cell[1]
 
@@ -69,5 +69,3 @@ function hexagonal (cell) {
 
   return neighbours
 }
-
-module.exports = hexagonal
