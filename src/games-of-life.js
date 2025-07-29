@@ -68,29 +68,23 @@ export function createWorld (getNeighboursOf) {
    * @returns {Function} evolve
    */
 
-  function world (transitionRule) {
+  return function world (transitionRule) {
     /**
      * @param {Function} isAliveNow
      * @returns {Function} isAliveNext
      */
 
-    function evolve (isAliveNow) {
-      var nextStatusOf = transitionRule(getNeighboursOf, isAliveNow)
+    return function evolve (isAliveNow) {
+      const nextStatusOf = transitionRule(getNeighboursOf, isAliveNow)
 
       /**
        * @param {*} cell
        * @returns {Boolean} status of the cell
        */
 
-      function isAliveNext (cell) {
+      return function isAliveNext (cell) {
         return nextStatusOf(cell)
       }
-
-      return isAliveNext
     }
-
-    return evolve
   }
-
-  return world
 }

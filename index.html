@@ -1,0 +1,241 @@
+<!DOCTYPE>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Games of Life</title>
+
+    <meta name="author" content="Gianluca Casati">
+    <meta name="description" content="Create any Game of Life variation">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: system-ui, sans-serif;
+        background-color: white;
+      }
+
+      .container {
+        min-height: 71vh;
+        display: flex;
+        flex-direction: column;
+        background-color: #f0f0f0;
+        --cell-size: 4px;
+      }
+      .row {
+        display: flex;
+        flex-direction: row;
+      }
+      .cell {
+        width: var(--cell-size);
+        height: var(--cell-size);
+      }
+      .alive {
+        background-color: #333333;
+      }
+
+      main {
+        margin: 1em;
+        max-width: 40ch;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      a:link, a:visited, a:hover, a:active, a:focus {
+        color: black;
+        outline-color: black;
+      }
+
+      footer {
+        margin: 1em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container"></div>
+    <main>
+      <h1>Games of Life</h1>
+      <p>
+        Create any Game of Life variation.
+      </p>
+
+      <h2>Hexagonal Demo</h2>
+
+      <a href="./examples/hexagonal/index.html">
+        <img src="./examples/hexagonal/hexagonal-game-of-life.png" alt="Hexagonal Game of Life Demo" width="100%">
+      </a>
+    </main>
+
+    <footer>
+      <a href="https://github.com/fibo/games-of-life">GitHub repo</a>
+    </footer>
+
+    <script type="importmap">
+      { "imports": { "games-of-life": "./src/games-of-life.js" } }
+    </script>
+
+    <script type="module">
+      import { createWorld, classicTransitionRule } from 'games-of-life';
+
+      const isAliveMap = new Map();
+      const isAliveNextMap = new Map();
+
+      function addRow(container, cellSize, width, i) {
+        const list = [];
+        const row = document.createElement('div');
+        row.classList.add('row');
+        container.appendChild(row);
+        let j = 0;
+        while (j * cellSize < width) {
+          const cell = document.createElement('div');
+          cell.classList.add('cell');
+          cell.dataset.row = i;
+          cell.dataset.col = j;
+          const id = [i, j].join();
+          if (Math.random() < 0.7) {
+            isAliveMap.set(id, true);
+            cell.classList.add('alive');
+          } else {
+            isAliveMap.set(id, false);
+          }
+          cell.onpointerover = () => {
+            isAliveMap.set(id, true);
+          };
+          list.push(cell);
+          j++;
+        }
+        row.append(...list);
+        return list;
+      }
+
+      function fillContainer() {
+        const cells = [];
+        const container = document.querySelector('.container');
+        const cellSize = parseInt(getComputedStyle(container).getPropertyValue('--cell-size'));
+
+        const { width, height } = container.getBoundingClientRect();
+
+        let i = 0;
+        while (i * cellSize < height) {
+          const rowCells = addRow(container, cellSize, width, i);
+          cells.push(rowCells);
+          i++;
+        }
+
+        return cells;
+      }
+
+      const cells = fillContainer();
+
+      const numCols = cells[0].length;
+      const numRows = cells.length;
+
+      // Then all other cases.
+      function getNeighboursOf([i, j]) {
+        // First corners, then borders, then all other cases.
+
+        // Top left corner.
+        if (i === 0 && j === 0)
+          return [
+                        [  i  , j + 1],
+            [i + 1, j], [i + 1, j + 1]
+          ];
+        // Top right corner.
+        if (i === 0 && j === numCols - 1)
+          return [
+            [  i  , j - 1],
+            [i + 1, j - 1], [i + 1, j]
+          ];
+        // Bottom right corner.
+        if (i === numRows - 1 && j === numCols - 1)
+          return [
+            [i - 1, j - 1], [i - 1, j],
+            [  i  , j - 1]
+          ];
+        // Bottom left corner.
+        if (i === numRows - 1 && j === 0)
+          return [
+            [i - 1, j], [i - 1, j + 1],
+                        [  i  , j + 1]
+          ];
+
+        // Top border.
+        if (i === 0 && j < numCols - 1)
+          return [
+            [  i  , j - 1],             [  i  , j + 1],
+            [i + 1, j - 1], [i + 1, j], [i + 1, j + 1]
+          ];
+        // Right border.
+        if (j === numCols - 1 && i < numRows - 1)
+          return [
+            [i - 1, j - 1], [i - 1, j],
+            [  i  , j - 1],
+            [i + 1, j - 1], [i + 1, j]
+          ];
+        // Bottom border.
+        if (i === numRows - 1 && j < numCols - 1)
+          return [
+            [i - 1, j - 1], [i - 1, j], [i - 1, j + 1],
+            [  i  , j - 1],             [  i  , j + 1]
+          ];
+        // Left border.
+        if (j === 0 && i < numRows - 1)
+          return [
+            [i - 1,   j  ], [i - 1, j + 1],
+            [  i  , j + 1],
+            [i + 1,   j  ], [i + 1, j + 1]
+          ];
+
+        // All other cases.
+        return [
+            [i - 1, j - 1], [i - 1, j], [i - 1, j + 1],
+            [  i  , j - 1],             [  i  , j + 1],
+            [i + 1, j - 1], [i + 1, j], [i + 1, j + 1]
+        ];
+      }
+
+      const world = createWorld(getNeighboursOf);
+      const transitionRule = classicTransitionRule.bind(null, 2, 3, 3);
+      const evolve = world(transitionRule);
+
+      let nextFrameTime = 0;
+      const deltaT = 50 // 50 = 1000 ms / 20 FPS
+
+      function loop () {
+        if (document.timeline.currentTime < nextFrameTime + deltaT) {
+          requestAnimationFrame(loop);
+          return;
+        }
+        nextFrameTime = document.timeline.currentTime + deltaT;
+        isAliveNextMap.clear();
+        const isAliveNext = evolve(([i, j]) => {
+          return isAliveMap.get([i, j].join());
+        });
+        for (let i = 0; i < numRows; i++) {
+          for (let j = 0; j < numCols; j++) {
+            const cell = cells[i][j];
+            const id = [i, j].join();
+            if (isAliveNext([i, j])) {
+              isAliveNextMap.set(id, true);
+              cell.classList.add('alive');
+            } else {
+              isAliveNextMap.set(id, false);
+              cell.classList.remove('alive');
+            }
+          }
+        }
+        for (const [key, value] of isAliveNextMap.entries()) {
+          isAliveMap.set(key, value);
+        }
+        requestAnimationFrame(loop);
+      }
+
+      requestAnimationFrame(loop);
+    </script>
+  </body>
+</html>
+
