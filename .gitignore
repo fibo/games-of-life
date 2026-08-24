@@ -3,6 +3,7 @@ node_modules
 npm-debug.log
 Gemfile*
 docs/_site
+.DS_Store
 
 # Test coverage
 coverage
